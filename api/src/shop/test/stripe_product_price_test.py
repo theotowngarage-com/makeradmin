@@ -37,7 +37,7 @@ class StripeRecurringWithoutStripeTest(ShopTestMixin, FlaskTestBase):
 
     def test_makeradmin_to_stripe_recurring_recurring(self) -> None:
         makeradmin_test_product = self.db.create_product(
-            unit="mån",
+            unit="month",
             smallest_multiple=3,
         )
         recurring = makeradmin_to_stripe_recurring(makeradmin_test_product, stripe_constants.PriceType.RECURRING)
@@ -46,7 +46,7 @@ class StripeRecurringWithoutStripeTest(ShopTestMixin, FlaskTestBase):
 
     def test_makeradmin_to_stripe_recurring_binding(self) -> None:
         makeradmin_test_product = self.db.create_product(
-            unit="mån",
+            unit="month",
             smallest_multiple=3,
         )
         recurring = makeradmin_to_stripe_recurring(makeradmin_test_product, stripe_constants.PriceType.BINDING_PERIOD)
@@ -55,7 +55,7 @@ class StripeRecurringWithoutStripeTest(ShopTestMixin, FlaskTestBase):
 
     def test_makeradmin_to_stripe_recurring_wrong_unit(self) -> None:
         makeradmin_test_product = self.db.create_product(
-            unit="st",
+            unit="piece",
         )
         with self.assertRaises(ValueError) as context:
             (makeradmin_to_stripe_recurring(makeradmin_test_product, stripe_constants.PriceType.RECURRING),)
@@ -103,7 +103,7 @@ class StripeProductPriceTest(ShopTestMixin, FlaskTestBase):
         else:
             assert stripe_price.type == "recurring"
             reccuring = stripe_price.recurring
-            if "mån" in makeradmin_product.unit:
+            if "month" in makeradmin_product.unit:
                 assert reccuring["interval"] == "month"
             else:
                 assert reccuring["interval"] == "year"
@@ -118,10 +118,10 @@ class StripeProductPriceTest(ShopTestMixin, FlaskTestBase):
 
     def test_create_product(self) -> None:
         makeradmin_test_product = self.db.create_product(
-            name="test månad enkel",
+            name="test month enkel",
             price=100.0,
             id=self.base_stripe_id,
-            unit="mån",
+            unit="month",
             smallest_multiple=1,
             category_id=self.subscription_category.id,
         )
@@ -135,7 +135,7 @@ class StripeProductPriceTest(ShopTestMixin, FlaskTestBase):
             name="test regular product",
             price=100.0,
             id=self.base_stripe_id + 1,
-            unit="st",
+            unit="piece",
             smallest_multiple=1,
             category_id=self.not_subscription_category.id,
         )
@@ -154,10 +154,10 @@ class StripeProductPriceTest(ShopTestMixin, FlaskTestBase):
 
     def test_create_product_with_price_monthly_simple(self) -> None:
         makeradmin_test_product = self.db.create_product(
-            name="test månad enkel",
+            name="test month enkel",
             price=100.0,
             id=self.base_stripe_id + 2,
-            unit="mån",
+            unit="month",
             smallest_multiple=1,
             category_id=self.subscription_category.id,
         )
@@ -176,10 +176,10 @@ class StripeProductPriceTest(ShopTestMixin, FlaskTestBase):
 
     def test_create_product_with_price_yearly_simple(self) -> None:
         makeradmin_test_product = self.db.create_product(
-            name="test år enkel",
+            name="test year enkel",
             price=200.0,
             id=self.base_stripe_id + 3,
-            unit="mån",
+            unit="month",
             smallest_multiple=1,
             category_id=self.subscription_category.id,
         )
@@ -198,10 +198,10 @@ class StripeProductPriceTest(ShopTestMixin, FlaskTestBase):
 
     def test_create_product_with_price_monthly_with_binding_period(self) -> None:
         makeradmin_test_product = self.db.create_product(
-            name="test månad med bindingstid",
+            name="test month med bindingstid",
             price=300.0,
             id=self.base_stripe_id + 4,
-            unit="mån",
+            unit="month",
             smallest_multiple=2,
             category_id=self.subscription_category.id,
         )
@@ -228,7 +228,7 @@ class StripeProductPriceTest(ShopTestMixin, FlaskTestBase):
             name="test activate deactivate",
             price=100.0,
             id=self.base_stripe_id + 5,
-            unit="mån",
+            unit="month",
             smallest_multiple=1,
             category_id=self.subscription_category.id,
         )
@@ -253,7 +253,7 @@ class StripeProductPriceTest(ShopTestMixin, FlaskTestBase):
             name="test update product",
             price=100.0,
             id=self.base_stripe_id + 6,
-            unit="mån",
+            unit="month",
             smallest_multiple=1,
             category_id=self.subscription_category.id,
         )
@@ -271,7 +271,7 @@ class StripeProductPriceTest(ShopTestMixin, FlaskTestBase):
             name="test update price",
             price=100.0,
             id=self.base_stripe_id + 7,
-            unit="mån",
+            unit="month",
             smallest_multiple=1,
             category_id=self.not_subscription_category.id,
         )
@@ -301,7 +301,7 @@ class StripeProductPriceTest(ShopTestMixin, FlaskTestBase):
             name="test update product",
             price=100.0,
             id=self.base_stripe_id + 8,
-            unit="mån",
+            unit="month",
             smallest_multiple=1,
             category_id=self.subscription_category.id,
         )
@@ -319,7 +319,7 @@ class StripeProductPriceTest(ShopTestMixin, FlaskTestBase):
             name="test update price",
             price=100.0,
             id=self.base_stripe_id + 9,
-            unit="mån",
+            unit="month",
             smallest_multiple=1,
             category_id=self.not_subscription_category.id,
         )
@@ -352,7 +352,7 @@ class StripeProductPriceTest(ShopTestMixin, FlaskTestBase):
             name="test eq price",
             price=200.0,
             id=self.base_stripe_id + 10,
-            unit="mån",
+            unit="month",
             smallest_multiple=1,
             category_id=self.subscription_category.id,
         )
@@ -360,7 +360,7 @@ class StripeProductPriceTest(ShopTestMixin, FlaskTestBase):
             name="test not eq price",
             price=200.0,
             id=self.base_stripe_id - 1,
-            unit="mån",
+            unit="month",
             smallest_multiple=1,
             category_id=self.subscription_category.id,
         )
@@ -381,7 +381,7 @@ class StripeProductPriceTest(ShopTestMixin, FlaskTestBase):
             name="test eq price",
             price=200.0,
             id=self.base_stripe_id + 11,
-            unit="mån",
+            unit="month",
             smallest_multiple=1,
             category_id=self.subscription_category.id,
         )
@@ -389,7 +389,7 @@ class StripeProductPriceTest(ShopTestMixin, FlaskTestBase):
             name="test not eq price",
             price=210.0,
             id=self.base_stripe_id - 1,
-            unit="mån",
+            unit="month",
             smallest_multiple=1,
             category_id=self.subscription_category.id,
         )
@@ -405,7 +405,7 @@ class StripeProductPriceTest(ShopTestMixin, FlaskTestBase):
             name="test not eq mult",
             price=200.0,
             id=self.base_stripe_id - 3,
-            unit="mån",
+            unit="month",
             smallest_multiple=2,
             category_id=self.subscription_category.id,
         )
@@ -413,7 +413,7 @@ class StripeProductPriceTest(ShopTestMixin, FlaskTestBase):
             name="test not eq category",
             price=200.0,
             id=self.base_stripe_id - 4,
-            unit="mån",
+            unit="month",
             smallest_multiple=2,
             category_id=self.not_subscription_category.id,
         )

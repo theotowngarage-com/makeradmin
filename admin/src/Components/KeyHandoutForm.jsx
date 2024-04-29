@@ -223,7 +223,7 @@ class KeyHandoutForm extends React.Component {
                     if (this.state.accessy_in_org) {
                         notifySuccess("Medlem redan i Makerspace Accessy org");
                     } else {
-                        notifySuccess("Accessy invite skickad");
+                        notifySuccess("Accessy invite succeeded");
                     }
                 });
             return false;
@@ -277,7 +277,7 @@ class KeyHandoutForm extends React.Component {
             } else {
                 invite_part = (
                     <span className="uk-badge uk-badge-success">
-                        Invite skickad
+                        Invite succeeded
                     </span>
                 );
             }

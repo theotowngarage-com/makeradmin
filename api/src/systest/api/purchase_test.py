@@ -9,7 +9,7 @@ logger = getLogger("makeradmin")
 
 class Test(ApiShopTestMixin, ApiTest):
     products = [
-        dict(price=12.3, unit="st", smallest_multiple=1),
+        dict(price=12.3, unit="piece", smallest_multiple=1),
         dict(price=1.2, unit="mm", smallest_multiple=100),
     ]
 

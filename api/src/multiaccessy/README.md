@@ -27,7 +27,7 @@ Måste plocka bort från Organisation. Skicka ny Accessy-invite till nytt nummer
 
 Fixat
 
-## Inbjudan
+## Invitation
 
 -   Invite via API
 -   SMS skickas till personen

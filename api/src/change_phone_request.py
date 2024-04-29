@@ -85,7 +85,7 @@ def change_phone_request(member_id: int | None, phone: str) -> int:
     except NoAuthConfigured:
         pass
     except Exception:
-        raise BadRequest("Misslyckades med att skicka sms med verifikations kod")
+        raise BadRequest("Failed med att skicka sms med verifikations kod")
 
     change_request = PhoneNumberChangeRequest(
         member_id=member_id, phone=phone, validation_code=validation_code, completed=False, timestamp=datetime.utcnow()

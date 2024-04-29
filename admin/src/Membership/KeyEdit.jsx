@@ -1,9 +1,9 @@
 import React from "react";
-import Key from "../Models/Key";
+import { withRouter } from "react-router";
+import DateTimeInput from "../Components/DateTimeInput";
 import TextInput from "../Components/TextInput";
 import Textarea from "../Components/Textarea";
-import DateTimeInput from "../Components/DateTimeInput";
-import { withRouter } from "react-router";
+import Key from "../Models/Key";
 import { confirmModal } from "../message";
 
 class KeyEdit extends React.Component {
@@ -82,7 +82,7 @@ class KeyEdit extends React.Component {
                                     model={this.key}
                                     name="description"
                                     title="Kommentar"
-                                    placeholder="Det är valfritt att lägga in en kommenter av nyckeln"
+                                    placeholder="Det är valfritt att enter en kommenter av nyckeln"
                                 />
 
                                 <div className="uk-form-row uk-margin-top">

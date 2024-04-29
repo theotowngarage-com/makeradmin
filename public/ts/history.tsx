@@ -24,7 +24,7 @@ const HistoryPage = ({
             <Sidebar cart={{ cart, productData }} />
             <div id="content" className="purchase-history">
                 <div className="content-centering">
-                    <h2>Köphistorik</h2>
+                    <h2>Purchase History</h2>
                     <h3>
                         #{member.member_number} {member.firstname}{" "}
                         {member.lastname}
@@ -74,7 +74,7 @@ common.documentLoaded().then(() => {
                 login.render_login(root, null, null);
             } else {
                 UIkit.modal.alert(
-                    "<h2>Misslyckades med att hämta köphistorik</h2>" +
+                    "<h2>Failed to retrieve purchase history</h2>" +
                         common.get_error(json),
                 );
             }

@@ -834,8 +834,8 @@ const poorMansHistoryManager = <T,>(
         const listener = (e: PopStateEvent) => {
             let newState = defaultState;
             if (location.hash.startsWith("#")) {
-                const st: T | undefined = parse(location.hash.slice(1));
-                if (st !== undefined) newState = st;
+                const state: T | undefined = parse(location.hash.slice(1));
+                if (state !== undefined) newState = state;
             }
             setState(newState);
         };

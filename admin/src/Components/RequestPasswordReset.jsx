@@ -41,14 +41,14 @@ class RequestPasswordReset extends React.Component {
                             onSubmit={this.submit.bind(this)}
                         >
                             <div className="uk-form-row">
-                                <h2>Glömt ditt lösenord?</h2>
+                                <h2>Glömt your password?</h2>
                             </div>
 
                             <div className="uk-form-row">
                                 <p>
                                     Fyll i ditt email eller medlemsnummer så
                                     skickar vi instruktioner om hur du
-                                    nollställer ditt lösenord.
+                                    nollställer your password.
                                 </p>
                             </div>
 

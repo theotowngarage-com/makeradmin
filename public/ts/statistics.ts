@@ -809,12 +809,12 @@ function addProductPurchasedChart(root: HTMLElement, data: ProductStatistics) {
     addRevenueChart(
         root,
         membershipSales,
-        "Försäljning i webshoppen av medlemskap (senaste 12 månaderna)",
+        "Försäljning i webshoppen av medlemskap (senaste 12 monthsna)",
     );
     addRevenueChart(
         root,
         otherSales,
-        "Försäljning i webshoppen av övriga produkter (senaste 12 månaderna)",
+        "Försäljning i webshoppen av övriga produkter (senaste 12 monthsna)",
     );
     addRevenueChart(
         root,
@@ -825,7 +825,7 @@ function addProductPurchasedChart(root: HTMLElement, data: ProductStatistics) {
                     (x) => x.category_id == c.id,
                 )?.amount ?? 0,
         })),
-        "Försäljning i webshoppen per kategori (senaste 12 månaderna)",
+        "Försäljning i webshoppen per kategori (senaste 12 monthsna)",
     );
 }
 

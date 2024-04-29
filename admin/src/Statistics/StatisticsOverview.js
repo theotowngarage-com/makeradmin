@@ -22,7 +22,7 @@ export default () => {
                         <li>Filter - filtrera på datumintervall etc</li>
                         <li>
                             Gruppering - Beräkna min/max/avg för dagar, veckor,
-                            månader, etc
+                            months, etc
                         </li>
                     </ul>
                 </li>

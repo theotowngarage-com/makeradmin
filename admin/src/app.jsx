@@ -155,7 +155,7 @@ const nav = {
             icon: "crosshairs",
         },
         {
-            text: "Logga ut",
+            text: "Log out",
             target: "/logout",
             icon: "sign-out",
         },

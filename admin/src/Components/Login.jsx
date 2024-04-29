@@ -10,7 +10,7 @@ export default class Login extends React.Component {
         const password = this.password.value;
 
         if (!username || !password) {
-            showError("Du måste fylla i email/medlemsnummer och lösenord");
+            showError("You must enter email/medlemsnummer och password");
             return;
         }
 
@@ -29,7 +29,7 @@ export default class Login extends React.Component {
                         onSubmit={this.login.bind(this)}
                     >
                         <div className="uk-form-row">
-                            <h2>Logga in</h2>
+                            <h2>log in</h2>
                         </div>
 
                         <div className="uk-form-row">
@@ -55,7 +55,7 @@ export default class Login extends React.Component {
                                     }}
                                     className="uk-form-large uk-form-width-large"
                                     type="password"
-                                    placeholder="Lösenord"
+                                    placeholder="Password"
                                 />
                             </div>
                         </div>
@@ -65,7 +65,7 @@ export default class Login extends React.Component {
                                 type="submit"
                                 className="uk-width-1-1 uk-button uk-button-primary uk-button-large"
                             >
-                                Logga in
+                                log in
                             </button>
                         </div>
 
@@ -74,7 +74,7 @@ export default class Login extends React.Component {
                                 className="uk-float-right uk-link uk-link-muted"
                                 to="/request-password-reset"
                             >
-                                Glömt ditt lösenord?
+                                Glömt your password?
                             </Link>
                         </div>
                     </form>

@@ -155,7 +155,7 @@ def create_required_stripe_products():
         name="Base membership",
         defaults=dict(
             price=200,
-            unit="år",
+            unit="year",
             display_order=next_display_order(Product),
             category_id=member_category.id,
             product_metadata={
@@ -171,7 +171,7 @@ def create_required_stripe_products():
         name="Makerspace access",
         defaults=dict(
             price=575,
-            unit="mån",
+            unit="month",
             display_order=next_display_order(Product),
             category_id=member_category.id,
             product_metadata={
@@ -188,7 +188,7 @@ def create_required_stripe_products():
         name="Makerspace access starter pack",
         defaults=dict(
             price=750,
-            unit="st",
+            unit="piece",
             display_order=next_display_order(Product),
             category_id=member_category.id,
             product_metadata={
@@ -204,7 +204,7 @@ def create_required_stripe_products():
         name="Base membership subscription",
         defaults=dict(
             price=200,
-            unit="år",
+            unit="year",
             display_order=next_display_order(Product),
             category_id=member_category.id,
             product_metadata={
@@ -219,7 +219,7 @@ def create_required_stripe_products():
         name="Makerspace access subscription",
         defaults=dict(
             price=350,
-            unit="mån",
+            unit="month",
             display_order=next_display_order(Product),
             category_id=member_category.id,
             product_metadata={
@@ -348,7 +348,7 @@ def create_shop_products() -> None:
             name=name,
             defaults=dict(
                 price=random.randint(5, 100),
-                unit="st",
+                unit="piece",
                 display_order=next_display_order(Product),
                 category_id=tools_category.id,
                 product_metadata={},

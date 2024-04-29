@@ -29,17 +29,17 @@ export function login_via_password(
         })
         .catch((response: ServerResponse<any>) => {
             if (response.status === common.UNAUTHORIZED) {
-                return Promise.reject(
-                    "Felaktig email/medlemsnummer eller lösenord.",
-                );
+                return Promise.reject("Wrong email/member number or password.");
             }
 
             return Promise.reject(
-                "Oväntad statuskod (" + response.status + ") från servern.",
+                "Unexpected status code (" +
+                    response.status +
+                    ") from the server.",
             );
         })
         .catch((msg) => {
-            showError("<h2>Inloggningen misslyckades</h2>" + msg);
+            showError("<h2>Login failed</h2>" + msg);
             return Promise.reject(null);
         })
         .then((data) => {
@@ -67,11 +67,11 @@ export function login_via_single_use_link(
             // Yay, success, refresh page
             if (json.data.status === "sent") {
                 showSuccess(
-                    "Ett mail har skickats till dig med en inloggningslänk, använd den för att logga in.",
+                    "A mail has been sent to you with a login link. Use it to log in.",
                 );
             } else {
                 showError(
-                    "<h2>Inloggningen misslyckades</h2>Tog emot ett oväntat svar från servern:<br><br>" +
+                    "<h2>Login failed</h2>Received an unexpected answer from the server:<br><br>" +
                         json.data.status,
                 );
             }
@@ -79,18 +79,18 @@ export function login_via_single_use_link(
         .catch((json) => {
             if (json.status === "not found") {
                 showError(
-                    "<h2>Inloggningen misslyckades</h2>Hittar inte email eller medlemsnummer.",
+                    "<h2>Login failed</h2>Hittar inte email eller medlemsnummer.",
                 );
             } else {
                 showError(
-                    "<h2>Inloggningen misslyckades</h2>Tog emot ett oväntat svar från servern:<br><br>" +
+                    "<h2>Login failed</h2>Received an unexpected answer from the server:<br><br>" +
                         json.message,
                 );
             }
         })
         .catch(() => {
             showError(
-                "<h2>Inloggningen misslyckades</h2>Kunde inte kommunicera med servern.",
+                "<h2>Login failed</h2>Could not communicate with the server.",
             );
         });
 }
@@ -132,7 +132,7 @@ export const Login = ({ redirect }: { redirect: string | null }) => {
                     e.preventDefault();
                     // Error handling
                     if (!tag) {
-                        UIkit.modal.alert("Du måste fylla i din E-postadress");
+                        UIkit.modal.alert("You must enter your email");
                         return;
                     }
 
@@ -140,7 +140,7 @@ export const Login = ({ redirect }: { redirect: string | null }) => {
                         loginMethod == LoginMethod.EmailAndPassword &&
                         !password
                     ) {
-                        UIkit.modal.alert("Du måste fylla i ditt lösenord");
+                        UIkit.modal.alert("You must enter your password");
                         return;
                     }
 
@@ -176,7 +176,7 @@ export const Login = ({ redirect }: { redirect: string | null }) => {
                         class="uk-form-large uk-width-1-1"
                         type="password"
                         id="password"
-                        placeholder="Lösenord"
+                        placeholder="Password"
                         value={password}
                         onChange={(e) => setPassword(e.currentTarget.value)}
                     />
@@ -208,8 +208,8 @@ export const Login = ({ redirect }: { redirect: string | null }) => {
                     }}
                 >
                     {loginMethod === LoginMethod.EmailLink
-                        ? "Logga in med lösenord"
-                        : "Logga in med endast email"}
+                        ? "login with password"
+                        : "login with email"}
                 </a>
             </p>
             <p style="text-align: center;">
@@ -226,7 +226,7 @@ function LoginPage({
     heading: string | null;
     redirect: string | null;
 }) {
-    heading = heading || "Logga in";
+    heading = heading || "log in";
 
     return (
         <>

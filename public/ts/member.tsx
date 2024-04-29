@@ -221,8 +221,8 @@ function SignedContractWarning({ member }: { member: member_t }) {
     const t = useTranslation();
     return member.labaccess_agreement_at ? null : (
         <WarningItem>
-            Du måste delta på en <strong>medlemintroduktion</strong>. Du hittar
-            dem i <a href={URL_CALENDAR}>kalendern</a>.
+            You must participate in a <strong>member introduction</strong>. You
+            can find them in the <a href={URL_CALENDAR}>calendar</a>.
         </WarningItem>
     );
 }
@@ -230,8 +230,8 @@ function SignedContractWarning({ member }: { member: member_t }) {
 function NoMembershipWarning({ membership }: { membership: membership_t }) {
     return membership.membership_active ? null : (
         <WarningItem>
-            Du måste köpa <strong>föreningsmedlemskap</strong> i{" "}
-            <a href={webshop_url}>webshoppen</a>.
+            You must buy a <strong>membership</strong> in{" "}
+            <a href={webshop_url}>the webshop</a>.
         </WarningItem>
     );
 }
@@ -239,8 +239,8 @@ function NoMembershipWarning({ membership }: { membership: membership_t }) {
 function MissingPhoneNumber({ member }: { member: member_t }) {
     return member.phone ? null : (
         <WarningItem>
-            Du måste lägga in ditt <strong>telefonnummer</strong> i
-            personuppgifterna nedan.
+            You must enter your <strong>phine number</strong>
+            in the personal info underneath.
         </WarningItem>
     );
 }
@@ -297,18 +297,17 @@ function PendingLabaccessInstructions({
     if (!can_sync_labaccess && pending_labaccess_days) {
         return (
             <>
-                Du behöver åtgärda ovanstående fel innan din labbaccess kan
-                synkas. När de är åtgärdade kommer den digitala nyckeln att
-                förlängas med <strong>{pending_labaccess_days} dagar</strong>{" "}
-                vid nästa nyckelsynkronisering.
+                You have to accept the rules above before your access to the
+                makerspace is approved. When accepted, we can plan a day to show
+                you around and we can give you the access to the space in
+                person.
             </>
         );
     } else if (can_sync_labaccess && pending_labaccess_days) {
         return (
             <>
-                <strong>{pending_labaccess_days} dagar</strong> kommer läggas
-                till vid nästa nyckelsynkronisering. Då kommer din access att
-                förlängas.
+                <strong>{pending_labaccess_days} days</strong> will be added to
+                your access to the garage.
             </>
         );
     } else {
@@ -494,10 +493,10 @@ async function send_accessy_invite() {
             "POST",
             `${window.apiBasePath}/webshop/member/current/accessy_invite`,
         );
-        UIkit.modal.alert(`<h2>Inbjudan skickad</h2>`);
+        UIkit.modal.alert(`<h2>Invitation succeeded</h2>`);
     } catch (e) {
         UIkit.modal.alert(
-            `<h2>Inbjudan misslyckades</h2><b class="uk-text-danger"">${get_error(
+            `<h2>Invitation failed</h2><b class="uk-text-danger"">${get_error(
                 e,
             )}</b>`,
         );
@@ -713,7 +712,7 @@ function PersonalData({
             </div>
             <div>
                 <label for="password" class="uk-form-label">
-                    Lösenord
+                    Password
                 </label>
                 <span style="width: 100%; display: flex;">
                     <input
@@ -899,12 +898,12 @@ function SubscriptionProduct({
 }) {
     const t = useTranslation();
     if (
-        product.unit !== "mån" &&
-        product.unit !== "år" &&
-        product.unit !== "st"
+        product.unit !== "month" &&
+        product.unit !== "year" &&
+        product.unit !== "piece"
     )
         throw new Error(
-            `Unexpected unit '${product.unit}' for ${product.name}. Expected one of år/mån/st`,
+            `Unexpected unit '${product.unit}' for ${product.name}. Expected one of year/month/piece`,
         );
 
     return (

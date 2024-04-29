@@ -131,8 +131,7 @@ documentLoaded().then(() => {
                 login.render_login(root, null, null);
             } else {
                 UIkit.modal.alert(
-                    "<h2>Misslyckades med att hämta kvittot</h2>" +
-                        get_error(json),
+                    "<h2>Failed med att hämta kvittot</h2>" + get_error(json),
                 );
             }
         });

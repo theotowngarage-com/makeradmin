@@ -21,7 +21,7 @@ const CourseButton = ({ quizInfo }: { quizInfo: QuizInfo }) => {
     if (completed) {
         actionBtn = (
             <div class="course-completed">
-                Genomförd <span uk-icon="icon: check; ratio: 1.5" />
+                Completed <span uk-icon="icon: check; ratio: 1.5" />
             </div>
         );
     } else if (quizInfo.correctly_answered_questions > 0) {
@@ -30,14 +30,14 @@ const CourseButton = ({ quizInfo }: { quizInfo: QuizInfo }) => {
             quizInfo.total_questions_in_quiz;
         actionBtn = (
             <div class="course-not-completed">
-                Fortsätt ({Math.round(completed_fraction * 100)}%){" "}
+                Continue ({Math.round(completed_fraction * 100)}%){" "}
                 <span uk-icon="icon: chevron-right; ratio: 1.5"></span>
             </div>
         );
     } else {
         actionBtn = (
             <div class="course-not-completed">
-                Ta kursen{" "}
+                Take the course{" "}
                 <span uk-icon="icon: chevron-right; ratio: 1.5"></span>
             </div>
         );
@@ -61,12 +61,10 @@ const CoursesPage = ({ courses }: { courses: QuizInfo[] }) => {
             <Sidebar cart={null} />
             <div id="content">
                 <div class="content-centering courses-page">
-                    <h2>Kurser</h2>
+                    <h2>Courses</h2>
                     <p>
-                        Här hittar du alla digitala kurser som Stockholm
-                        Makerspace har. De flesta kurser sker på plats och
-                        annonseras i facebook-gruppen och på slack. Men vissa
-                        har en digital variant som du kan ta när du vill.
+                        Here you can find all the online courses from The O'Town
+                        Garage.
                     </p>
                     <div>
                         {courses.map((quizInfo) => (
@@ -105,7 +103,7 @@ common.documentLoaded().then(() => {
                 login.render_login(rootElement, null, null);
             } else {
                 UIkit.modal.alert(
-                    "<h2>Misslyckades med att hämta quiz-info</h2>" +
+                    "<h2>Failed to retrieve the quiz info</h2>" +
                         common.get_error(json),
                 );
             }

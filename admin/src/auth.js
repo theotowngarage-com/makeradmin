@@ -57,12 +57,12 @@ class Auth {
             .then((response) => {
                 if (response.status === 401) {
                     return Promise.reject(
-                        "Felaktig email/medlemsnummer eller lösenord.",
+                        "Wrong email/member number or password.",
                     );
                 }
                 if (response.status === 429) {
                     return Promise.reject(
-                        "För många misslyckades inloggningar. Kontot spärrat i 60 minuter.",
+                        "För många failed inloggningar. Kontot spärrat i 60 minuter.",
                     );
                 }
                 if (response.status === 200) {
@@ -70,11 +70,13 @@ class Auth {
                 }
 
                 return Promise.reject(
-                    "Oväntad statuskod (" + response.status + ") från servern.",
+                    "Unexpected status code (" +
+                        response.status +
+                        ") from the server.",
                 );
             })
             .catch((msg) => {
-                showError("<h2>Inloggningen misslyckades</h2>" + msg);
+                showError("<h2>Login failed</h2>" + msg);
                 return Promise.reject(null);
             })
             .then((data) => {
@@ -120,21 +122,21 @@ class Auth {
             .then(({ response, responseData }) => {
                 if (response.status === 200) {
                     showSuccess(
-                        "Ett mail har skickats till dig med en inloggningslänk, använd den för att logga in.",
+                        "A mail has been sent to you with a login link. Use it to log in.",
                     );
                 } else if (responseData.status === "ambiguous") {
                     showError(
-                        "<h2>Inloggningen misslyckades</h2>Det finns flera medlemmar som matchar '" +
+                        "<h2>Login failed</h2>Det finns flera medlemmar som matchar '" +
                             tag +
                             "'. Välj något som är mer unikt, t.ex email eller medlemsnummer.",
                     );
                 } else if (responseData.status === "not found") {
                     showError(
-                        "<h2>Inloggningen misslyckades</h2>Ingen medlem med det namnet, email eller medlemsnummer existerar.",
+                        "<h2>Login failed</h2>Ingen medlem med det namnet, email eller medlemsnummer existerar.",
                     );
                 } else {
                     showError(
-                        "<h2>Inloggningen misslyckades</h2>Tog emot ett oväntat svar från servern:<br><br>" +
+                        "<h2>Login failed</h2>Received an unexpected answer from the server:<br><br>" +
                             response.status +
                             " " +
                             response.statusText,
@@ -143,7 +145,7 @@ class Auth {
             })
             .catch(() => {
                 showError(
-                    "<h2>Inloggningen misslyckades</h2>Kunde inte kommunicera med servern.",
+                    "<h2>Login failed</h2>Could not communicate with the server.",
                 );
             });
     }
