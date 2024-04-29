@@ -117,12 +117,11 @@ const PaymentButton = ({
             on_failure: (json: ServerResponse<any>) => {
                 if (json.status === UNAUTHORIZED) {
                     UIkit.modal.alert(
-                        "<h2>Betalningen misslyckades</h2>Du är inte inloggad",
+                        "<h2>The payment failed</h2>You are not logged in",
                     );
                 } else {
                     UIkit.modal.alert(
-                        "<h2>Betalningen misslyckades</h2>" +
-                            common.get_error(json),
+                        "<h2>The payment failed</h2>" + common.get_error(json),
                     );
                 }
             },
@@ -136,7 +135,7 @@ const PaymentButton = ({
     return (
         <>
             <form id="pay">
-                <h3>Betala med kort via Stripe</h3>
+                <h3>Pay by card via Stripe</h3>
                 <div class="form-row">
                     <div id="payment_element"></div>
                     <div id="card-element">
@@ -184,7 +183,7 @@ const PaymentButton = ({
                                 }
                             }
                         } catch (e) {
-                            common.show_error("Betalningen misslyckades", e);
+                            common.show_error("The payment failed", e);
                         } finally {
                             setInProgress(false);
                         }
@@ -197,7 +196,7 @@ const PaymentButton = ({
                         uk-spinner={""}
                     ></span>
                     <span>
-                        Betala / Pay
+                        Pay
                         <span>
                             {" "}
                             {Cart.formatCurrency(cart.sum(productData.id2item))}
@@ -217,7 +216,7 @@ const CartPage = ({ productData }: { productData: ProductData }) => {
             <Sidebar cart={{ cart, productData }} />
             <div id="content" class="cartpage">
                 <div class="content-centering">
-                    <h3 class="cart-header">Varukorg</h3>
+                    <h3 class="cart-header">Shopping basket</h3>
                     <ul id="cart" class="layout-table">
                         {cart.items.length > 0 ? (
                             cart.items.map((cartItem) => (
@@ -230,7 +229,7 @@ const CartPage = ({ productData }: { productData: ProductData }) => {
                             ))
                         ) : (
                             <p class="empty-cart-text">
-                                Du har inga produkter i varukorgen.
+                                You have no products in the bin.
                             </p>
                         )}
                     </ul>
@@ -268,7 +267,7 @@ common.documentLoaded().then(() => {
                 login.render_login(root, null, null);
             } else {
                 UIkit.modal.alert(
-                    "<h2>Misslyckades med att hämta köphistorik</h2>" +
+                    "<h2>Failed to retrieve purchase history</h2>" +
                         common.get_error(json),
                 );
             }

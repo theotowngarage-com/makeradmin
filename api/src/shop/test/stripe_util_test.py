@@ -64,7 +64,7 @@ class StripeUtilWithoutStripeTest(ShopTestMixin, FlaskTestBase):
         makeradmin_test_product = self.db.create_product(
             name="test",
             price=price,
-            unit="mån",
+            unit="month",
             smallest_multiple=5,
         )
         for multiple in multiples:

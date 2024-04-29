@@ -41,39 +41,22 @@ class RequestPasswordReset extends React.Component {
                             onSubmit={this.submit.bind(this)}
                         >
                             <div className="uk-form-row">
-                                <h2>Glömt ditt lösenord?</h2>
+                                <h2>Forget your password?</h2>
                             </div>
 
                             <div className="uk-form-row">
-                                <p>
-                                    Fyll i ditt email eller medlemsnummer så
-                                    skickar vi instruktioner om hur du
-                                    nollställer ditt lösenord.
-                                </p>
+                                <p>Fill in your username and we'll send you instructions on how to reset your password.</p>
                             </div>
 
                             <div className="uk-form-row">
                                 <div className="uk-form-icon">
-                                    <i className="uk-icon-user" />
-                                    <input
-                                        ref={(c) => {
-                                            this.user_identification = c;
-                                        }}
-                                        className="uk-form-large uk-form-width-large"
-                                        type="text"
-                                        placeholder="Email/Medlemsnummer"
-                                    />
+                                    <i className="uk-icon-user"/>
+                                    <input ref={c => { this.user_identification = c; }} className="uk-form-large uk-form-width-large" type="text" placeholder="Email / Member ID" />
                                 </div>
                             </div>
 
                             <div className="uk-form-row">
-                                <button
-                                    type="submit"
-                                    className="uk-width-1-1 uk-button uk-button-success uk-button-large"
-                                >
-                                    <span className="uk-icon-check" /> Skicka
-                                    epost
-                                </button>
+                                <button type="submit" className="uk-width-1-1 uk-button uk-button-success uk-button-large"><span className="uk-icon-check" /> Send e-mail</button>
                             </div>
                         </form>
                     </div>

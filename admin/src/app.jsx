@@ -35,80 +35,80 @@ const nav = {
     brand: "MakerAdmin",
     items: [
         {
-            text: "Medlemmar",
+            text: "Memberships",
             target: "/membership",
             icon: "user",
             children: [
                 {
-                    text: "Medlemmar",
+                    text: "Members",
                     target: "/membership/members",
                     icon: "user",
                 },
                 {
-                    text: "Grupper",
+                    text: "Groups",
                     target: "/membership/groups",
                     icon: "group",
                 },
                 {
-                    text: "Nycklar",
+                    text: "Keys",
                     target: "/membership/keys",
                     icon: "key",
                 },
                 {
-                    text: "Medlemsperioder",
+                    text: "Membership spans",
                     target: "/membership/spans",
                     icon: "clock-o",
                 },
                 {
-                    text: "Exportera medlemmar",
+                    text: "Export members",
                     target: "/membership/export",
                     icon: "download",
                 },
             ],
         },
         {
-            text: "Försäljning",
+            text: "Sales",
             target: "/sales",
             icon: "shopping-basket",
             children: [
                 {
-                    text: "Ordrar",
+                    text: "Orders",
                     target: "/sales/order",
                 },
                 {
-                    text: "Presentkort",
+                    text: "Gift-cards",
                     target: "/sales/gift-card",
                 },
                 {
-                    text: "Produkter",
+                    text: "Products",
                     target: "/sales/product",
                 },
                 {
-                    text: "Bilder",
+                    text: "Images",
                     target: "/sales/image",
                 },
                 {
-                    text: "Kategorier",
+                    text: "Categories",
                     target: "/sales/category",
                 },
                 {
-                    text: "Bokföring",
+                    text: "Accounting",
                     target: "/sales/accounting",
                 },
             ],
         },
         {
-            text: "Utskick",
+            text: "Messages",
             target: "/messages",
             icon: "envelope",
             children: [
                 {
-                    text: "Historik",
+                    text: "History",
                     target: "/messages/history",
                     icon: "list",
                 },
                 {
-                    text: "Nytt utskick",
+                    text: "New messages",
                     target: "/messages/new",
                     icon: "envelope",
                 },
@@ -126,12 +126,12 @@ const nav = {
             ],
         },
         {
-            text: "Statistik",
+            text: "Statistics",
             target: "/statistics",
             icon: "area-chart",
         },
         {
-            text: "Inställningar",
+            text: "Settings",
             target: "/settings",
             icon: "cog",
             children: [
@@ -155,7 +155,7 @@ const nav = {
             icon: "crosshairs",
         },
         {
-            text: "Logga ut",
+            text: "Log out",
             target: "/logout",
             icon: "sign-out",
         },

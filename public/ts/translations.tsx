@@ -25,15 +25,15 @@ const Eng = {
     cancel: "Cancel",
     apply_for_discounts: "I cannot afford the membership fee",
     unit: {
-        år: {
+        year: {
             one: "year",
             many: "years",
         },
-        mån: {
+        month: {
             one: "month",
             many: "months",
         },
-        st: {
+        piece: {
             one: "piece",
             many: "pieces",
         },
@@ -424,8 +424,8 @@ const Eng = {
                 inactive_recent: (days: number) =>
                     `Your makerspace access expired ${days} days ago.`,
                 inactive_yesterday: `Your makerspace access expired yesterday`,
-                active_hours_remaining: (hours: number) =>
-                    `Your makerspace access is valid for only ${hours} more hours.`,
+                active_hours_remaining: (piece: number) =>
+                    `Your makerspace access is valid for only ${piece} more piece.`,
                 active_few_days_remaining: (end_date: string, days: number) =>
                     `Your makerspace access is valid through ${end_date} (only ${days} days left).`,
                 active_days_remaining: (end_date: string, days: number) =>
@@ -436,8 +436,8 @@ const Eng = {
                 inactive_recent: (days: number) =>
                     `Your base membership expired ${days} days ago.`,
                 inactive_yesterday: `Your base membership expired yesterday`,
-                active_hours_remaining: (hours: number) =>
-                    `Your base membership is valid for only ${hours} more hours.`,
+                active_hours_remaining: (piece: number) =>
+                    `Your base membership is valid for only ${piece} more piece.`,
                 active_few_days_remaining: (end_date: string, days: number) =>
                     `Your base membership is valid through ${end_date} (only ${days} days left).`,
                 active_days_remaining: (end_date: string, days: number) =>
@@ -448,8 +448,8 @@ const Eng = {
                 inactive_recent: (days: number) =>
                     `Your special makerspace access expired ${days} days ago.`,
                 inactive_yesterday: `Your special makerspace access expired yesterday`,
-                active_hours_remaining: (hours: number) =>
-                    `You have been given special access to the premises, which is for only ${hours} more hours.`,
+                active_hours_remaining: (piece: number) =>
+                    `You have been given special access to the premises, which is for only ${piece} more piece.`,
                 active_few_days_remaining: (end_date: string, days: number) =>
                     `You have been given special access to the premises through ${end_date} (only ${days} days left).`,
                 active_days_remaining: (end_date: string, days: number) =>
@@ -508,8 +508,8 @@ const Eng = {
             `,
             expired_single_day:
                 "Your <strong>lab membership</strong> expired yesterday.",
-            expires_today: (hours: number) =>
-                `Your <strong>lab membership</strong> is valid for ${hours} more hours.`,
+            expires_today: (piece: number) =>
+                `Your <strong>lab membership</strong> is valid for ${piece} more piece.`,
             valid: (enddate: string, days: number) => `
                 Your <strong>lab membership</strong> is valid through ${enddate}${" "}
                 (only ${days} day(s) left).
@@ -600,8 +600,8 @@ const Swe: typeof Eng = {
                 Din <strong>labaccess</strong> är ogiltig sedan ${days} dagar (${enddate}).
             `,
             expired_single_day: "Din <strong>labaccess</strong> gick ut igår.",
-            expires_today: (hours: number) =>
-                `Din <strong>labaccess</strong> är giltig i mindre än ${hours}${" "} timmar till.`,
+            expires_today: (piece: number) =>
+                `Din <strong>labaccess</strong> är giltig i mindre än ${piece}${" "} timmar till.`,
             valid: (enddate: string, days: number) => `
                 Din <strong>labaccess</strong> är giltig t.o.m. ${enddate}${" "}
                 (endast ${days} dagar till).
@@ -711,7 +711,9 @@ export const TranslationWrapper = ({
 };
 
 export const translateUnit = (unit: string, count: number, t: Translator) => {
-    if (unit !== "mån" && unit !== "år" && unit !== "st")
-        throw new Error(`Unexpected unit '${unit}'. Expected one of år/mån/st`);
+    if (unit !== "month" && unit !== "year" && unit !== "piece")
+        throw new Error(
+            `Unexpected unit '${unit}'. Expected one of year/month/piece`,
+        );
     return t(`unit.${unit}.${count > 1 ? "many" : "one"}`);
 };

@@ -1,14 +1,13 @@
 import React from "react";
-import { Prompt } from "react-router";
-import TextInput from "./TextInput";
-import { withRouter } from "react-router";
-import Span, { filterCategory } from "../Models/Span";
+import { renderToString } from "react-dom/server";
+import { Prompt, withRouter } from "react-router";
 import Collection from "../Models/Collection";
 import { ADD_LABACCESS_DAYS } from "../Models/ProductAction";
-import { dateTimeToStr, parseUtcDate, utcToday } from "../utils";
+import Span, { filterCategory } from "../Models/Span";
 import { get, post } from "../gateway";
 import { notifySuccess } from "../message";
-import { renderToString } from "react-dom/server";
+import { dateTimeToStr, parseUtcDate, utcToday } from "../utils";
+import TextInput from "./TextInput";
 
 function last_span_enddate(spans, category) {
     const last_span = filterCategory(spans, category).splice(-1)[0];
@@ -27,35 +26,14 @@ function DateView(props) {
     let status, text;
 
     if (!props.date) {
-        status = (
-            <div className="uk-panel-badge uk-badge uk-badge-warning">
-                Saknas
-            </div>
-        );
-        text = (
-            <p style={{ color: "gray", fontStyle: "italic" }}>
-                {props.placeholder}
-            </p>
-        );
+        status = <div className="uk-panel-badge uk-badge uk-badge-warning">Missing</div>;
+        text = <p style={{"color": "gray", "fontStyle": "italic"}}>{props.placeholder}</p>;
     } else if (!is_valid) {
-        status = (
-            <div className="uk-panel-badge uk-badge uk-badge-danger">
-                Utgånget
-            </div>
-        );
-        text = (
-            <p>
-                Giltigt till:{" "}
-                <span style={{ color: "red", fontStyle: "italic" }}>
-                    {props.date}
-                </span>
-            </p>
-        );
+        status = <div className="uk-panel-badge uk-badge uk-badge-danger">Expired</div>;
+        text = <p>Valid untill: <span style={{"color": "red", "fontStyle": "italic"}}>{props.date}</span></p>;
     } else {
-        status = (
-            <div className="uk-panel-badge uk-badge uk-badge-success">OK</div>
-        );
-        text = <p>Giltigt till: {props.date}</p>;
+        status = <div className="uk-panel-badge uk-badge uk-badge-success">OK</div>;
+        text = <p>Valid untill: {props.date}</p>;
     }
 
     // Override if there are pending days to be synchronized
@@ -65,23 +43,12 @@ function DateView(props) {
         );
     }
 
-    return (
-        <div className="uk-panel uk-panel-box">
-            <p style={{ fontSize: "1.2em" }}>
-                <b>{props.title}</b>
-            </p>
-            {status}
-            {text}
-            {props.pending ? (
-                <p>
-                    <span>
-                        (<b>{props.pending}</b> dagar kommer läggas till vid en
-                        nyckelsynkronisering)
-                    </span>
-                </p>
-            ) : null}
-        </div>
-    );
+    return <div className="uk-panel uk-panel-box">
+        <p style={{"fontSize": "1.2em"}}><b>{props.title}</b></p>
+        {status}
+        {text}
+        { props.pending ? <p><span>(<b>{props.pending}</b> days will be added after key sync)</span></p> : null }
+    </div>;
 }
 
 class KeyHandoutForm extends React.Component {
@@ -223,7 +190,7 @@ class KeyHandoutForm extends React.Component {
                     if (this.state.accessy_in_org) {
                         notifySuccess("Medlem redan i Makerspace Accessy org");
                     } else {
-                        notifySuccess("Accessy invite skickad");
+                        notifySuccess("Accessy invite succeeded");
                     }
                 });
             return false;
@@ -277,7 +244,7 @@ class KeyHandoutForm extends React.Component {
             } else {
                 invite_part = (
                     <span className="uk-badge uk-badge-success">
-                        Invite skickad
+                        Invite succeeded
                     </span>
                 );
             }

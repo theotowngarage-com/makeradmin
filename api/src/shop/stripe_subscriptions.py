@@ -128,10 +128,10 @@ def setup_subscription_makeradmin_product(
     }
     interval = recurring_price["recurring"]["interval"]
     if interval == "month":
-        product.unit = "mån"
+        product.unit = "month"
         average_days = 30
     elif interval == "year":
-        product.unit = "år"
+        product.unit = "year"
         average_days = 365
     else:
         raise RuntimeError(f"Unexpected interval {interval} in stripe product")

@@ -1,12 +1,12 @@
 import React from "react";
-import TextInput from "./TextInput";
-import Textarea from "./Textarea";
-import DateTimeInput from "./DateTimeInput";
-import * as _ from "underscore";
-import SelectInput from "./SelectInput";
 import ReactSelect from "react-select";
+import * as _ from "underscore";
 import ProductAction, { ACTION_TYPES } from "../Models/ProductAction";
 import CheckboxInput from "./CheckboxInput";
+import DateTimeInput from "./DateTimeInput";
+import SelectInput from "./SelectInput";
+import TextInput from "./TextInput";
+import Textarea from "./Textarea";
 
 // Return list of available actions types based on selected ones
 const filterAvailableActions = (actions) => {
@@ -118,46 +118,14 @@ class ProductForm extends React.Component {
                     }}
                 >
                     <fieldset className="uk-margin-top">
-                        <legend>
-                            <i className="uk-icon-shopping-cart" /> Produkt
-                        </legend>
-                        <TextInput
-                            model={product}
-                            name="name"
-                            title="Produktnamn"
-                        />
-                        <TextInput
-                            model={product}
-                            name="product_metadata"
-                            title="Metadata"
-                        />
-                        <SelectInput
-                            model={product}
-                            name="category_id"
-                            title="Kategori"
-                            getLabel={(o) => o.name}
-                            getValue={(o) => o.id}
-                            dataSource={"/webshop/category"}
-                        />
-                        <Textarea
-                            model={product}
-                            name="description"
-                            title="Beskrivning"
-                            rows="4"
-                        />
-                        <TextInput model={product} name="unit" title="Enhet" />
-                        <TextInput
-                            model={product}
-                            name="price"
-                            title="Pris (SEK)"
-                            type="number"
-                        />
-                        <TextInput
-                            model={product}
-                            name="smallest_multiple"
-                            title="Multipel "
-                            type="number"
-                        />
+                        <legend><i className="uk-icon-shopping-cart" /> Product</legend>
+                        <TextInput model={product} name="name" title="Product name" />
+                        <TextInput model={product} name="product_metadata" title="Metadata" />
+                        <SelectInput model={product} name="category_id" title="Category" getLabel={o => o.name} getValue={o => o.id} dataSource={"/webshop/category"} />
+                        <Textarea model={product} name="description" title="Description" rows="4"/>
+                        <TextInput model={product} name="unit" title="Unit" />
+                        <TextInput model={product} name="price" title="Price (DKK)" type="number"/>
+                        <TextInput model={product} name="smallest_multiple" title="Multiple " type="number"/>
                         <SelectInput
                             nullOption={{ id: 0 }}
                             model={product}
@@ -184,11 +152,13 @@ class ProductForm extends React.Component {
                         />
                     </fieldset>
                     <fieldset className="uk-margin-top">
-                        <legend>
-                            <i className="uk-icon-magic" /> Åtgärder
-                        </legend>
-                        <div>{actions.map(renderAction)}</div>
-                        {_.isEmpty(availableActionTypes) ? (
+                        <legend><i className="uk-icon-magic"/> Actions</legend>
+                        <div>
+                            {actions.map(renderAction)}
+                        </div>
+                        {
+                            _.isEmpty(availableActionTypes)
+                            ? (
                             ""
                         ) : (
                             <div>
@@ -208,20 +178,7 @@ class ProductForm extends React.Component {
                                         })
                                     }
                                 />
-                                <button
-                                    type="button"
-                                    className="uk-button uk-button-success uk-float-right"
-                                    onClick={() =>
-                                        product.addAction(
-                                            new ProductAction({
-                                                action_type: selectedActionType,
-                                            }),
-                                        )
-                                    }
-                                >
-                                    <i className="uk-icon-plus" /> Lägg till
-                                    åtgärd
-                                </button>
+                                <button type="button" className="uk-button uk-button-success uk-float-right" onClick={() => product.addAction(new ProductAction({action_type: selectedActionType}))}><i className="uk-icon-plus"/> Add action</button>
                             </div>
                         )}
                     </fieldset>
@@ -253,49 +210,22 @@ class ProductForm extends React.Component {
                         />
                     </fieldset>
                     <fieldset className="uk-margin-top">
-                        <legend>
-                            <i className="uk-icon-tag" /> Metadata
-                        </legend>
-                        <CheckboxInput
-                            model={product}
-                            name="show"
-                            title="Synlig"
-                        />
-                        {product.id ? (
+                        <legend><i className="uk-icon-tag"/> Metadata</legend>
+                        <CheckboxInput model={product} name="show" title="Visible"/>
+                        {
+                            product.id
+                            ? (
                             <>
-                                <DateTimeInput
-                                    model={product}
-                                    name="created_at"
-                                    title="Skapad"
-                                />
-                                <DateTimeInput
-                                    model={product}
-                                    name="updated_at"
-                                    title="Uppdaterad"
-                                />
+                                <DateTimeInput model={product} name="created_at" title="Created"/>
+                                <DateTimeInput model={product} name="updated_at" title="Updated"/>
                             </>
                         ) : (
                             ""
                         )}
                     </fieldset>
                     <fieldset className="uk-margin-top">
-                        {product.id ? (
-                            <a
-                                className="uk-button uk-button-danger uk-float-left"
-                                onClick={onDelete}
-                            >
-                                <i className="uk-icon-trash" /> Ta bort produkt
-                            </a>
-                        ) : (
-                            ""
-                        )}
-                        <button
-                            disabled={saveDisabled}
-                            className="uk-button uk-button-success uk-float-right"
-                        >
-                            <i className="uk-icon-save" />{" "}
-                            {product.id ? "Spara" : "Skapa"}
-                        </button>
+                        {product.id ? <a className="uk-button uk-button-danger uk-float-left" onClick={onDelete}><i className="uk-icon-trash"/> Remove product</a> : ""}
+                        <button disabled={saveDisabled} className="uk-button uk-button-success uk-float-right"><i className="uk-icon-save"/> {product.id ? 'Save' : 'Create'}</button>
                     </fieldset>
                 </form>
             </div>

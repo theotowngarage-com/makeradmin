@@ -1,11 +1,11 @@
 import React from "react";
 import { withRouter } from "react-router";
-import TextInput from "./TextInput";
-import Textarea from "./Textarea";
 import { Async } from "react-select";
-import { get } from "../gateway";
 import Group from "../Models/Group";
 import Member from "../Models/Member";
+import { get } from "../gateway";
+import TextInput from "./TextInput";
+import Textarea from "./Textarea";
 
 const groupOption = (d) => {
     const id = d[Group.model.id];
@@ -13,7 +13,7 @@ const groupOption = (d) => {
     return {
         id,
         type,
-        label: `Grupp: ${d.title}`,
+        label: `Group: ${d.title}`,
         value: type + id,
     };
 };
@@ -25,7 +25,7 @@ const memberOption = (d) => {
     return {
         id,
         type,
-        label: `Medlem: ${d.firstname} ${lastname} (#${d.member_number})`,
+        label: `Member: ${d.firstname} ${lastname} (#${d.member_number})`,
         value: type + id,
     };
 };
@@ -123,20 +123,10 @@ class MessageForm extends React.Component {
 
                 <div className="uk-form-row">
                     <div className="uk-form-controls">
-                        <p className="uk-float-left">
-                            <span id="characterCounter">
-                                {message.body.length}
-                            </span>{" "}
-                            tecken
-                        </p>
+                        <p className="uk-float-left"><span id="characterCounter">{message.body.length}</span> sign</p>
                     </div>
                     <div className="uk-form-controls">
-                        <button
-                            className="uk-button uk-button-success uk-float-right"
-                            disabled={sendDisabled}
-                        >
-                            <i className="uk-icon-save" /> Skicka
-                        </button>
+                        <button className="uk-button uk-button-success uk-float-right" disabled={sendDisabled}><i className="uk-icon-save"/> Send</button>
                     </div>
                 </div>
             </form>

@@ -11,18 +11,8 @@ export default class SearchBox extends React.Component {
                             onSubmit={(e) => e.preventDefault()}
                         >
                             <div className="uk-form-icon">
-                                <i className="uk-icon-search" />
-                                <input
-                                    value={this.props.value}
-                                    ref={(c) => (this.search = c)}
-                                    tabIndex="1"
-                                    type="text"
-                                    className="uk-form-width-large"
-                                    placeholder="Skriv in ett sökord"
-                                    onChange={(e) =>
-                                        this.props.handleChange(e.target.value)
-                                    }
-                                />
+                                <i className="uk-icon-search"/>
+                                <input value={this.props.value} ref={c => this.search = c} tabIndex="1" type="text" className="uk-form-width-large" placeholder="Enter a search term" onChange={(e) => this.props.handleChange(e.target.value)} />
                             </div>
                         </form>
                     </div>

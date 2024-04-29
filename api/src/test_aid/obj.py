@@ -133,7 +133,7 @@ class ObjFactory:
             name=f"product-{random_str(12)}",
             price=100.0,
             description=self.fake.bs(),
-            unit="st",
+            unit="piece",
             display_order=randint(int(1e8), int(9e8)),
             smallest_multiple=1,
             filter=None,

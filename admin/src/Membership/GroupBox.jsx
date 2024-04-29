@@ -1,8 +1,8 @@
+import PropTypes from "prop-types";
 import React from "react";
 import { withRouter } from "react-router";
-import { NavItem } from "../nav";
-import PropTypes from "prop-types";
 import Group from "../Models/Group";
+import { NavItem } from "../nav";
 
 class GroupBox extends React.Component {
     constructor(props) {
@@ -33,27 +33,12 @@ class GroupBox extends React.Component {
 
         return (
             <div>
-                <h2>Grupp {title}</h2>
+                <h2>Group {title}</h2>
 
                 <ul className="uk-tab">
-                    <NavItem
-                        icon={null}
-                        to={"/membership/groups/" + group_id + "/info"}
-                    >
-                        Information
-                    </NavItem>
-                    <NavItem
-                        icon={null}
-                        to={"/membership/groups/" + group_id + "/members"}
-                    >
-                        Medlemmar
-                    </NavItem>
-                    <NavItem
-                        icon={null}
-                        to={"/membership/groups/" + group_id + "/permissions"}
-                    >
-                        Behörigheter
-                    </NavItem>
+                    <NavItem icon={null} to={"/membership/groups/" + group_id + "/info"}>Information</NavItem>
+                    <NavItem icon={null} to={"/membership/groups/" + group_id + "/members"}>Members</NavItem>
+                    <NavItem icon={null} to={"/membership/groups/" + group_id + "/permissions"}>Permissions</NavItem>
                 </ul>
                 {this.props.children}
             </div>

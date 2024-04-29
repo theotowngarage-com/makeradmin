@@ -1,7 +1,7 @@
 import React from "react";
 
 const Currency = (props) => {
-    const formatter = new Intl.NumberFormat("sv-SE", {
+    const formatter = new Intl.NumberFormat('da-DK', {
         // style: 'currency',
         // currency: 'SEK',
         minimumFractionDigits: 2,

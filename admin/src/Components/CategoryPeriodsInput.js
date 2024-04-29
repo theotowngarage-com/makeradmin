@@ -1,7 +1,7 @@
 import React from "react";
+import DatePeriod from "../Models/DatePeriod";
 import { utcToday } from "../utils";
 import DatePeriodInput from "./DatePeriodInput";
-import DatePeriod from "../Models/DatePeriod";
 
 export default class CategoryPeriodsInput extends React.Component {
     constructor(props) {
@@ -50,19 +50,12 @@ export default class CategoryPeriodsInput extends React.Component {
                         </div>
                     );
                 })}
-                <button
-                    type="button"
-                    style={{ marginTop: "2px" }}
-                    className="uk-button uk-button-small uk-button-success"
-                    onClick={() => {
-                        const period = new DatePeriod();
-                        period.start = utcToday();
-                        period.end = utcToday();
-                        this.props.categoryPeriods.add(period);
-                    }}
-                >
-                    Lägg till period
-                </button>
+                <button type="button" style={{marginTop: "2px"}} className="uk-button uk-button-small uk-button-success" onClick={() => {
+                    const period = new DatePeriod();
+                    period.start = utcToday();
+                    period.end = utcToday();
+                    this.props.categoryPeriods.add(period);
+                }}>Add to period</button>
             </div>
         );
     }

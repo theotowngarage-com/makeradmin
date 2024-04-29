@@ -9,8 +9,9 @@ export default class Login extends React.Component {
         const username = this.username.value;
         const password = this.password.value;
 
-        if (!username || !password) {
-            showError("Du måste fylla i email/medlemsnummer och lösenord");
+        if (!username || !password)
+        {
+            showError("You must enter a username and password");
             return;
         }
 
@@ -29,20 +30,13 @@ export default class Login extends React.Component {
                         onSubmit={this.login.bind(this)}
                     >
                         <div className="uk-form-row">
-                            <h2>Logga in</h2>
+                            <h2>Log in</h2>
                         </div>
 
                         <div className="uk-form-row">
                             <div className="uk-form-icon">
-                                <i className="uk-icon-user" />
-                                <input
-                                    ref={(c) => {
-                                        this.username = c;
-                                    }}
-                                    className="uk-form-large uk-form-width-large"
-                                    type="text"
-                                    placeholder="Email/Medlemsnummer"
-                                />
+                                <i className="uk-icon-user"/>
+                                <input ref={c => { this.username = c; }} className="uk-form-large uk-form-width-large" type="text" placeholder="Email / User ID" />
                             </div>
                         </div>
 
@@ -55,27 +49,17 @@ export default class Login extends React.Component {
                                     }}
                                     className="uk-form-large uk-form-width-large"
                                     type="password"
-                                    placeholder="Lösenord"
+                                    placeholder="Password"
                                 />
                             </div>
                         </div>
 
                         <div className="uk-form-row">
-                            <button
-                                type="submit"
-                                className="uk-width-1-1 uk-button uk-button-primary uk-button-large"
-                            >
-                                Logga in
-                            </button>
+                            <button type="submit" className="uk-width-1-1 uk-button uk-button-primary uk-button-large">Log in</button>
                         </div>
 
                         <div className="uk-form-row uk-text-small">
-                            <Link
-                                className="uk-float-right uk-link uk-link-muted"
-                                to="/request-password-reset"
-                            >
-                                Glömt ditt lösenord?
-                            </Link>
+                            <Link className="uk-float-right uk-link uk-link-muted" to="/request-password-reset">Forgot your password?</Link>
                         </div>
                     </form>
                 </div>

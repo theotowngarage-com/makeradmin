@@ -1,12 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Async } from "react-select";
-import Collection from "../Models/Collection";
-import Member from "../Models/Member";
+import * as _ from "underscore";
 import CollectionTable from "../Components/CollectionTable";
 import Date from "../Components/DateShow";
+import Collection from "../Models/Collection";
+import Member from "../Models/Member";
 import { get } from "../gateway";
-import * as _ from "underscore";
 
 const Row = (collection) => (props) => {
     const { item } = props;
@@ -71,12 +71,12 @@ class GroupBoxMembers extends React.Component {
 
     render() {
         const columns = [
-            { title: "#", sort: "member_id" },
-            { title: "Förnamn", sort: "firstname" },
-            { title: "Efternamn", sort: "lastname" },
-            { title: "E-post", sort: "email" },
-            { title: "Blev medlem", sort: "created_at" },
-            { title: "" },
+            {title: "#", sort: "member_id"},
+            {title: "First name", sort: "firstname"},
+            {title: "Last name", sort: "lastname"},
+            {title: "Email", sort: "email"},
+            {title: "Became member", sort: "created_at"},
+            {title: ""},
         ];
 
         const { selectedOption } = this.state;
@@ -85,7 +85,7 @@ class GroupBoxMembers extends React.Component {
             <div>
                 <div className="uk-margin-top uk-form uk-form-stacked">
                     <label className="uk-form-label" htmlFor="member">
-                        Lägg till i grupp
+                        Log in as member
                     </label>
                     <div className="uk-form-controls">
                         <Async
@@ -111,12 +111,7 @@ class GroupBoxMembers extends React.Component {
                     </div>
                 </div>
                 <div className="uk-margin-top">
-                    <CollectionTable
-                        emptyMessage="Inga medlemmar i grupp"
-                        rowComponent={Row(this.collection)}
-                        collection={this.collection}
-                        columns={columns}
-                    />
+                    <CollectionTable emptyMessage="No members in group" rowComponent={Row(this.collection)} collection={this.collection} columns={columns} />
                 </div>
             </div>
         );

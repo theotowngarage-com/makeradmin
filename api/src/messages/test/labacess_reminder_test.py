@@ -17,7 +17,7 @@ class Test(ShopTestMixin, FlaskTestBase):
     products = [
         dict(
             price=100.0,
-            unit="st",
+            unit="piece",
             smallest_multiple=1,
             action=dict(action_type=ProductAction.ADD_LABACCESS_DAYS, value=30),
         )

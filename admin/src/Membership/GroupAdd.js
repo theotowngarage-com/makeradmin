@@ -13,7 +13,7 @@ class GroupAdd extends React.Component {
     render() {
         return (
             <div>
-                <h2>Skapa grupp</h2>
+                <h2>Create group</h2>
                 <GroupForm
                     group={this.group}
                     onSave={() =>

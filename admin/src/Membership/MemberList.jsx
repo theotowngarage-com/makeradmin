@@ -1,11 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Date from "../Components/DateShow";
-import Collection from "../Models/Collection";
-import Member from "../Models/Member";
 import CollectionTable from "../Components/CollectionTable";
+import Date from "../Components/DateShow";
 import SearchBox from "../Components/SearchBox";
+import Collection from "../Models/Collection";
 import CollectionNavigation from "../Models/CollectionNavigation";
+import Member from "../Models/Member";
 
 const Row = (props) => {
     const { item, deleteItem } = props;
@@ -41,12 +41,12 @@ class MemberList extends CollectionNavigation {
 
     render() {
         const columns = [
-            { title: "#", sort: "member_id" },
-            { title: "Förnamn", sort: "firstname" },
-            { title: "Efternamn", sort: "lastname" },
-            { title: "E-post", sort: "email" },
-            { title: "Blev medlem", sort: "created_at" },
-            { title: "" },
+            {title: "#", sort: "member_id"},
+            {title: "First name", sort: "firstname"},
+            {title: "Last name", sort: "lastname"},
+            {title: "Email", sort: "email"},
+            {title: "Became member", sort: "created_at"},
+            {title: ""},
         ];
 
         return (

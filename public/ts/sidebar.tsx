@@ -71,7 +71,7 @@ export const Sidebar = ({
                 />
                 <ul className="uk-nav uk-nav-default">
                     <NavItem url="/member" icon="user">
-                        Medlemsvy
+                        Member page
                     </NavItem>
                     <NavItem url="/shop" icon="cart">
                         Webshop
@@ -98,7 +98,7 @@ export const Sidebar = ({
                                         </li>
                                     ))}
                                 <NavItem url="/shop/cart" icon="cart">
-                                    Min Kundvagn (
+                                    Shopping Cart (
                                     {Cart.formatCurrency(
                                         cart.cart.sum(cart.productData.id2item),
                                     )}
@@ -107,13 +107,13 @@ export const Sidebar = ({
                             </ul>
                         )}
                     <NavItem url="/shop/member/history" icon="history">
-                        Min köphistorik
+                        My purchase history
                     </NavItem>
                     <NavItem url="/shop/member/courses" icon="star">
-                        Kurser
+                        Courses
                     </NavItem>
                     <NavItem url="/shop/member/licenses" icon="tag">
-                        Licenser och rabatter
+                        Licenses and discounts
                     </NavItem>
                     <li>
                         <a
@@ -122,7 +122,7 @@ export const Sidebar = ({
                                 logout();
                             }}
                         >
-                            <span uk-icon="sign-out"></span> Logga ut
+                            <span uk-icon="sign-out"></span> Log out
                         </a>
                     </li>
 
@@ -133,7 +133,7 @@ export const Sidebar = ({
                             }`}
                         >
                             <a href="/shop/cart">
-                                <span uk-icon="cart"></span> Betala
+                                <span uk-icon="cart"></span> Pay
                                 <span id="cart-sum">
                                     {Cart.formatCurrency(
                                         cart.cart.sum(cart.productData.id2item),

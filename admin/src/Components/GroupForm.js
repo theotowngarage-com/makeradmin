@@ -1,6 +1,6 @@
 import React from "react";
-import TextInput from "./TextInput";
 import { withRouter } from "react-router";
+import TextInput from "./TextInput";
 import Textarea from "./Textarea";
 
 class GroupForm extends React.Component {
@@ -51,24 +51,8 @@ class GroupForm extends React.Component {
 
                     <div className="uk-form-row uk-margin-top">
                         <div className="uk-form-controls">
-                            {group.id ? (
-                                <a
-                                    className="uk-button uk-button-danger uk-float-left"
-                                    onClick={onDelete}
-                                >
-                                    <i className="uk-icon-trash" /> Ta bort
-                                    grupp
-                                </a>
-                            ) : (
-                                ""
-                            )}
-                            <button
-                                className="uk-button uk-button-success uk-float-right"
-                                disabled={saveDisabled}
-                            >
-                                <i className="uk-icon-save" />{" "}
-                                {group.id ? "Spara" : "Skapa"}
-                            </button>
+                            {group.id ? <a className="uk-button uk-button-danger uk-float-left" onClick={onDelete}><i className="uk-icon-trash"/> Remove group</a> : ""}
+                            <button className="uk-button uk-button-success uk-float-right" disabled={saveDisabled}><i className="uk-icon-save"/> {group.id ? 'Save' : 'Create'}</button>
                         </div>
                     </div>
                 </form>

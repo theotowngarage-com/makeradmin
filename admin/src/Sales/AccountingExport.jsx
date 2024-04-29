@@ -47,7 +47,7 @@ class AccountingExport extends React.Component {
                 })
                 .catch((error) => {
                     showError(
-                        "<h2>Misslyckades ladda ner fil.</h2>Kunde inte kommunicera med servern: " +
+                        "<h2>Failed ladda ner fil.</h2>Could not communicate with the server: " +
                             error.message,
                     );
                 });
@@ -95,7 +95,7 @@ class AccountingExport extends React.Component {
                                     vilken period du vill exportera
                                 </legend>
                                 <label className="uk-form-label" htmlFor="">
-                                    År:
+                                    Year:
                                 </label>
                                 <Select
                                     name="year"
@@ -110,7 +110,7 @@ class AccountingExport extends React.Component {
                                     }
                                 />
                                 <label className="uk-form-label" htmlFor="">
-                                    Månad:
+                                    Month:
                                 </label>
                                 <Select
                                     name="month"

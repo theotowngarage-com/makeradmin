@@ -422,12 +422,12 @@ export const ToPayPreview = ({
             const product_id = product.product_metadata.special_product_id;
             AssertIsWellKnownProductId(product_id);
             if (
-                product.unit !== "mån" &&
-                product.unit !== "år" &&
-                product.unit !== "st"
+                product.unit !== "month" &&
+                product.unit !== "year" &&
+                product.unit !== "piece"
             )
                 throw new Error(
-                    `Unexpected unit '${product.unit}' for ${product.name}. Expected one of år/mån/st`,
+                    `Unexpected unit '${product.unit}' for ${product.name}. Expected one of year/month/piece`,
                 );
             let period =
                 product.smallest_multiple +
@@ -438,7 +438,7 @@ export const ToPayPreview = ({
                     }`,
                 );
             if (product_id === "access_starter_pack") {
-                // Special case for the starter pack period. Otherwise it would show "1 st"
+                // Special case for the starter pack period. Otherwise it would show "1 piece"
                 period = t("special_products.access_starter_pack.period");
             }
             if (amount !== originalAmount) {

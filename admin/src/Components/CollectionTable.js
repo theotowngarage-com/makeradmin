@@ -168,18 +168,12 @@ export default class CollectionTable extends React.Component {
                         </thead>
                         <tbody>{rows}</tbody>
                     </table>
-                    {loading ? (
-                        <div className="loadingOverlay">
-                            <div className="loadingWrapper">
-                                <span>
-                                    <i className="uk-icon-refresh uk-icon-spin" />{" "}
-                                    Hämtar data...
-                                </span>
-                            </div>
-                        </div>
-                    ) : (
-                        ""
-                    )}
+                    {loading ?
+                     <div className="loadingOverlay">
+                         <div className="loadingWrapper">
+                             <span><i className="uk-icon-refresh uk-icon-spin"/> Retrieving data...</span>
+                         </div>
+                     </div>  : ''}
                 </div>
                 {pagination}
             </div>

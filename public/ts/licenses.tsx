@@ -11,9 +11,9 @@ const LicensesPage = () => {
             <Sidebar cart={null} />
             <div id="content">
                 <div className="content-centering">
-                    <h2>Licenser och Rabatter</h2>
+                    <h2>Licenses and discounts</h2>
                     <p>
-                        Det här är en lista med licenser och rabatter som
+                        Det här är en lista med Licenses and discounts som
                         medlemmar i Stockholm Makerspace kan använda fritt.
                     </p>
                     <p>

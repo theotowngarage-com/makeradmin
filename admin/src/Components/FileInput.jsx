@@ -105,36 +105,19 @@ module.exports = class FileInput extends React.Component {
 		this.state.model.set(this.props.name, event.target.value);
 	}
 */
-    render() {
-        return (
-            <div>
-                <div id="upload-drop" className="uk-placeholder">
-                    <p>
-                        <i className="uk-icon-cloud-upload uk-icon-medium uk-text-muted uk-margin-small-right"></i>
-                        {this.state.filename ? (
-                            <span>
-                                {this.state.filename} (
-                                <a onClick={this.clearUpload.bind(this)}>
-                                    Ta bort
-                                </a>
-                                )
-                            </span>
-                        ) : (
-                            <span>
-                                Ladda upp genom att dra och släppa en fil här
-                                eller klicka på{" "}
-                                <a className="uk-form-file">
-                                    ladda upp
-                                    <input
-                                        id="upload-select"
-                                        className="uk-hidden"
-                                        type="file"
-                                    />
-                                </a>
-                                .
-                            </span>
-                        )}
-                    </p>
+	render()
+	{
+		return (
+			<div>
+				<div id="upload-drop" className="uk-placeholder">
+					<p>
+						<i className="uk-icon-cloud-upload uk-icon-medium uk-text-muted uk-margin-small-right"></i>
+						{this.state.filename ?
+							<span>{this.state.filename} (<a onClick={this.clearUpload.bind(this)}>Delete</a>)</span>
+						:
+							<span>Upload by dragging and dropping a file here or click <a className="uk-form-file">upload<input id="upload-select" className="uk-hidden" type="file" /></a>.</span>
+						}
+					</p>
 
                     {this.state.progressbarVisible ? (
                         <div>
