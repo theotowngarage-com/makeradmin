@@ -45,7 +45,7 @@ class MemberList extends CollectionNavigation {
             {title: "First name", sort: "firstname"},
             {title: "Last name", sort: "lastname"},
             {title: "Email", sort: "email"},
-            {title: "Became member", sort: "created_at"},
+            {title: "Joined", sort: "created_at"},
             {title: ""},
         ];
 
@@ -53,15 +53,8 @@ class MemberList extends CollectionNavigation {
             <div>
                 <h2>Medlemmar</h2>
 
-                <p className="uk-float-left">
-                    På denna sida ser du en lista på samtliga medlemmar.
-                </p>
-                <Link
-                    to="/membership/members/add"
-                    className="uk-button uk-button-primary uk-float-right"
-                >
-                    <i className="uk-icon-plus-circle" /> Skapa ny medlem
-                </Link>
+                <p className="uk-float-left">On this page you see the list of all the members.</p>
+                <Link to="/membership/members/add" className="uk-button uk-button-primary uk-float-right"><i className="uk-icon-plus-circle"/> Create new member</Link>
 
                 <SearchBox
                     handleChange={this.onSearch}

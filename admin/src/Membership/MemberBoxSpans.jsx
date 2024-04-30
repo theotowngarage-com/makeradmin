@@ -1,15 +1,15 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import Collection from "../Models/Collection";
-import Span from "../Models/Span";
-import { ADD_LABACCESS_DAYS } from "../Models/ProductAction";
-import { confirmModal } from "../message";
-import CollectionTable from "../Components/CollectionTable";
-import DateTimeShow from "../Components/DateTimeShow";
-import DateShow from "../Components/DateShow";
 import "react-day-picker/lib/style.css";
-import MembershipPeriodsInput from "./MembershipPeriodsInput";
+import { Link } from "react-router-dom";
+import CollectionTable from "../Components/CollectionTable";
+import DateShow from "../Components/DateShow";
+import DateTimeShow from "../Components/DateTimeShow";
+import Collection from "../Models/Collection";
+import { ADD_LABACCESS_DAYS } from "../Models/ProductAction";
+import Span from "../Models/Span";
 import { get } from "../gateway";
+import { confirmModal } from "../message";
+import MembershipPeriodsInput from "./MembershipPeriodsInput";
 
 class MemberBoxSpans extends React.Component {
     constructor(props) {
@@ -55,28 +55,22 @@ class MemberBoxSpans extends React.Component {
 
         return (
             <div className="uk-margin-top">
-                <h2>Medlemsperioder</h2>
-                <p>
-                    <b>{this.state.pending_labaccess_days}</b> dagar labaccess
-                    kommer läggas till vid en nyckelsynkronisering.
-                </p>
-                <hr />
-                <MembershipPeriodsInput
-                    spans={this.collection}
-                    member_id={this.props.match.params.member_id}
-                />
+                <h2>Membership period</h2>
+                <p><b>{this.state.pending_labaccess_days}</b> days lab access will be added during a key synchronization.</p>
+                <hr/>
+                <MembershipPeriodsInput spans={this.collection} member_id={this.props.match.params.member_id}/>
                 <h2>Spans</h2>
                 <hr />
                 <CollectionTable
                     collection={this.collection}
                     columns={[
-                        { title: "#", sort: "span_id" },
-                        { title: "Typ", sort: "type" },
-                        { title: "Skapad", sort: "created_at" },
-                        { title: "" },
-                        { title: "Raderad", sort: "deleted_at" },
-                        { title: "Start", sort: "startdate" },
-                        { title: "Slut", sort: "enddate" },
+                        {title: "#", sort: "span_id"},
+                        {title: "Type", sort: "type"},
+                        {title: "Created", sort: "created_at"},
+                        {title: ""},
+                        {title: "Deleted", sort: "deleted_at"},
+                        {title: "Start", sort: "startdate"},
+                        {title: "End", sort: "enddate"},
                     ]}
                     rowComponent={({ item }) => (
                         <tr>

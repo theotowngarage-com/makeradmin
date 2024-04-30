@@ -1,11 +1,11 @@
 import React from "react";
-import Collection from "../Models/Collection";
 import { Link } from "react-router-dom";
-import Group from "../Models/Group";
-import CollectionTable from "../Components/CollectionTable";
-import { get } from "../gateway";
 import Select from "react-select";
 import * as _ from "underscore";
+import CollectionTable from "../Components/CollectionTable";
+import Collection from "../Models/Collection";
+import Group from "../Models/Group";
+import { get } from "../gateway";
 
 const filterOptions = (items, options) => {
     const current = new Set(items.map((i) => i.id));
@@ -96,12 +96,12 @@ class MemberBoxGroups extends React.Component {
                 </div>
                 <div className="uk-margin-top">
                     <CollectionTable
-                        emptyMessage="Inte med i några grupper"
+                        emptyMessage="Not in any groups"
                         collection={this.collection}
                         columns={[
-                            { title: "Titel", sort: "title" },
-                            { title: "Antal medlemmar" },
-                            { title: "" },
+                            {title: "Title", sort: "title"},
+                            {title: "Number of members"},
+                            {title: ""},
                         ]}
                         rowComponent={({ item }) => (
                             <tr>

@@ -1,8 +1,8 @@
-import React from "react";
-import { NavItem } from "../nav";
-import { withRouter } from "react-router";
 import PropTypes from "prop-types";
+import React from "react";
+import { withRouter } from "react-router";
 import Member from "../Models/Member";
+import { NavItem } from "../nav";
 
 class MemberBox extends React.Component {
     constructor(props) {
@@ -42,42 +42,14 @@ class MemberBox extends React.Component {
                 </h2>
 
                 <ul className="uk-tab">
-                    <NavItem
-                        to={"/membership/members/" + member_id + "/key-handout"}
-                    >
-                        Medlemsintroduktion
-                    </NavItem>
-                    <NavItem
-                        to={"/membership/members/" + member_id + "/member-data"}
-                    >
-                        Uppgifter
-                    </NavItem>
-                    <NavItem
-                        to={"/membership/members/" + member_id + "/groups"}
-                    >
-                        Grupper
-                    </NavItem>
-                    <NavItem to={"/membership/members/" + member_id + "/keys"}>
-                        Nycklar
-                    </NavItem>
-                    <NavItem
-                        to={"/membership/members/" + member_id + "/permissions"}
-                    >
-                        Behörigheter
-                    </NavItem>
-                    <NavItem
-                        to={"/membership/members/" + member_id + "/orders"}
-                    >
-                        Ordrar
-                    </NavItem>
-                    <NavItem
-                        to={"/membership/members/" + member_id + "/messages"}
-                    >
-                        Utskick
-                    </NavItem>
-                    <NavItem to={"/membership/members/" + member_id + "/spans"}>
-                        Perioder
-                    </NavItem>
+                    <NavItem to={"/membership/members/" + member_id + "/key-handout"}>Key handout</NavItem>
+                    <NavItem to={"/membership/members/" + member_id + "/member-data"}>Tasks</NavItem>
+                    <NavItem to={"/membership/members/" + member_id + "/groups"}>Groups</NavItem>
+                    <NavItem to={"/membership/members/" + member_id + "/keys"}>Keys</NavItem>
+                    <NavItem to={"/membership/members/" + member_id + "/permissions"}>Permissions</NavItem>
+                    <NavItem to={"/membership/members/" + member_id + "/orders"}>Orders</NavItem>
+                    <NavItem to={"/membership/members/" + member_id + "/messages"}>Messages</NavItem>
+                    <NavItem to={"/membership/members/" + member_id + "/spans"}>Spans</NavItem>
                 </ul>
                 {this.props.children}
             </div>

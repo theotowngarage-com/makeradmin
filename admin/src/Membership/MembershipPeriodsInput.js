@@ -93,39 +93,11 @@ export default class MembershipPeriodsInput extends React.Component {
         };
 
         return (
-            <form
-                className="uk-form"
-                onSubmit={(e) => {
-                    e.preventDefault();
-                    onSave();
-                    return false;
-                }}
-            >
-                <label className="uk-label" htmlFor="showHistoric">
-                    Visa historiska
-                </label>
-                <input
-                    id="showHistoric"
-                    className="uk-checkbox"
-                    type="checkbox"
-                    checked={showHistoric}
-                    onChange={(e) =>
-                        this.setState({ showHistoric: e.target.checked })
-                    }
-                />
-                {this.categoryPeriodsList.map((cp) => (
-                    <CategoryPeriodsInput
-                        key={cp.category}
-                        categoryPeriods={cp}
-                        showHistoric={showHistoric}
-                    />
-                ))}
-                <button
-                    disabled={saveDisabled}
-                    className="uk-button uk-button-success uk-float-right"
-                >
-                    <i className="uk-icon-save" /> Spara
-                </button>
+            <form className="uk-form" onSubmit={(e) => {e.preventDefault(); onSave(); return false;}}>
+                <label className="uk-label" htmlFor="showHistoric">Show historic</label>
+                <input id="showHistoric" className="uk-checkbox" type="checkbox" checked={showHistoric} onChange={e => this.setState({showHistoric: e.target.checked})}/>
+                {this.categoryPeriodsList.map(cp => <CategoryPeriodsInput key={cp.category} categoryPeriods={cp} showHistoric={showHistoric}/>)}
+                <button disabled={saveDisabled} className="uk-button uk-button-success uk-float-right"><i className="uk-icon-save"/> Save</button>
             </form>
         );
     }

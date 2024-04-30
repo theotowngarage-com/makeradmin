@@ -1,12 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Date from "../Components/DateShow";
-import Collection from "../Models/Collection";
 import CollectionTable from "../Components/CollectionTable";
+import Date from "../Components/DateShow";
 import DateTimeShow from "../Components/DateTimeShow";
+import Collection from "../Models/Collection";
+import CollectionNavigation from "../Models/CollectionNavigation";
 import Span from "../Models/Span";
 import { confirmModal } from "../message";
-import CollectionNavigation from "../Models/CollectionNavigation";
 
 const Row = (deleteItem) => (props) => {
     const { item } = props;
@@ -67,25 +67,20 @@ class SpanList extends CollectionNavigation {
                 );
 
         const columns = [
-            { title: "#", sort: "span_id" },
-            { title: "Typ", sort: "type" },
-            { title: "Skapad", sort: "created_at" },
-            { title: "" },
-            { title: "Raderad", sort: "deleted_at" },
-            { title: "Medlem", sort: "member_id" },
-            { title: "Start", sort: "startdate" },
-            { title: "Slut", sort: "enddate" },
+            {title: "#", sort: "span_id"},
+            {title: "Type", sort: "type"},
+            {title: "Created", sort: "created_at"},
+            {title: ""},
+            {title: "Deleted", sort: "deleted_at"},
+            {title: "Member id", sort: "member_id"},
+            {title: "Start", sort: "startdate"},
+            {title: "End", sort: "enddate"},
         ];
 
         return (
             <div>
-                <h2>Medlemsperioder</h2>
-                <CollectionTable
-                    rowComponent={Row(deleteItem)}
-                    collection={this.collection}
-                    columns={columns}
-                    onPageNav={this.onPageNav}
-                />
+                <h2>Membership periods</h2>
+                <CollectionTable rowComponent={Row(deleteItem)} collection={this.collection} columns={columns} onPageNav={this.onPageNav} />
             </div>
         );
     }

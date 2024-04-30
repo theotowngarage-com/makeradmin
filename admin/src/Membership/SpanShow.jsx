@@ -25,7 +25,7 @@ class SpanShow extends React.Component {
 
         return (
             <div>
-                <h2>Medlemsperiod {data.span_id}</h2>
+                <h2>Membership periods {data.span_id}</h2>
                 <dl className="uk-description-list">
                     {_.keys(data).map((key) => (
                         <div key={key}>

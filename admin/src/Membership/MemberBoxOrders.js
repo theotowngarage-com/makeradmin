@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Order from "../Models/Order";
-import Collection from "../Models/Collection";
 import CollectionTable from "../Components/CollectionTable";
 import DateTimeShow from "../Components/DateTimeShow";
+import Collection from "../Models/Collection";
+import Order from "../Models/Order";
 
 const Row = (props) => {
     const { item } = props;
@@ -32,20 +32,15 @@ class MemberBoxOrders extends React.Component {
 
     render() {
         const columns = [
-            { title: "Order" },
-            { title: "Skapad" },
-            { title: "Status" },
-            { title: "Belopp" },
+            {title: "Order"},
+            {title: "Created"},
+            {title: "Status"},
+            {title: "Ammount"},
         ];
 
         return (
             <div className="uk-margin-top">
-                <CollectionTable
-                    emptyMessage="Ingar ordrar"
-                    rowComponent={Row}
-                    collection={this.collection}
-                    columns={columns}
-                />
+                <CollectionTable emptyMessage="No orders" rowComponent={Row} collection={this.collection} columns={columns} />
             </div>
         );
     }

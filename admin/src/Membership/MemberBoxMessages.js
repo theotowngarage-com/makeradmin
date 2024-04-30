@@ -1,10 +1,10 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import CollectionTable from "../Components/CollectionTable";
+import DateTimeShow from "../Components/DateTimeShow";
 import Collection from "../Models/Collection";
 import CollectionNavigation from "../Models/CollectionNavigation";
-import CollectionTable from "../Components/CollectionTable";
 import Message from "../Models/Message";
-import DateTimeShow from "../Components/DateTimeShow";
-import { Link } from "react-router-dom";
 
 const Row = (props) => {
     const { item } = props;
@@ -40,30 +40,16 @@ class MemberBoxMessages extends CollectionNavigation {
 
     render() {
         const columns = [
-            { title: "Skapad", sort: "created_at" },
-            { title: "Status", sort: "status" },
-            { title: "Mottagare", sort: "recipient" },
-            { title: "Meddelande", sort: "subject" },
+            {title: "Created at", sort: "created_at"},
+            {title: "Status", sort: "status"},
+            {title: "Recipient", sort: "recipient"},
+            {title: "Subject", sort: "subject"},
         ];
 
         return (
             <div className="uk-margin-top">
-                <CollectionTable
-                    rowComponent={Row}
-                    collection={this.collection}
-                    columns={columns}
-                    onPageNav={this.onPageNav}
-                />
-                <Link
-                    to={
-                        "/membership/members/" +
-                        this.props.match.params.member_id +
-                        "/messages/new"
-                    }
-                    className="uk-button uk-button-primary"
-                >
-                    <i className="uk-icon-envelope" /> Skicka meddelande
-                </Link>
+                <CollectionTable rowComponent={Row} collection={this.collection} columns={columns} />
+                <Link to={"/membership/members/" + this.props.match.params.member_id + "/messages/new"} className="uk-button uk-button-primary"><i className="uk-icon-envelope" /> Send message</Link>
             </div>
         );
     }

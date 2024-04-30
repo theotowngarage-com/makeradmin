@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Collection from "../Models/Collection";
 import CollectionTable from "../Components/CollectionTable";
-import Group from "../Models/Group";
 import SearchBox from "../Components/SearchBox";
+import Collection from "../Models/Collection";
 import CollectionNavigation from "../Models/CollectionNavigation";
+import Group from "../Models/Group";
 
 const Row = (props) => {
     const { item, deleteItem } = props;
@@ -41,25 +41,18 @@ class GroupList extends CollectionNavigation {
 
     render() {
         const columns = [
-            { title: "Titel", sort: "title" },
-            { title: "Namn", sort: "name" },
-            { title: "Antal medlemmar" },
-            { title: "" },
+            {title: "Title", sort: "title"},
+            {title: "Name", sort: "name"},
+            {title: "Number of members"},
+            {title: ""},
         ];
 
         return (
             <div>
-                <h2>Grupper</h2>
+                <h2>Groups</h2>
 
-                <p className="uk-float-left">
-                    På denna sida ser du en lista på samtliga grupper..
-                </p>
-                <Link
-                    to="/membership/groups/add"
-                    className="uk-button uk-button-primary uk-float-right"
-                >
-                    <i className="uk-icon-plus-circle" /> Skapa ny grupp
-                </Link>
+                <p className="uk-float-left">On this page you see a list of all groups.</p>
+                <Link to="/membership/groups/add" className="uk-button uk-button-primary uk-float-right"><i className="uk-icon-plus-circle"/> Create new group</Link>
 
                 <SearchBox
                     handleChange={this.onSearch}

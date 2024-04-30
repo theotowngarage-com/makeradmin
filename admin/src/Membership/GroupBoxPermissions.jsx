@@ -1,10 +1,10 @@
 import React from "react";
-import Permission from "../Models/Permission";
+import Select from "react-select";
+import * as _ from "underscore";
 import CollectionTable from "../Components/CollectionTable";
 import Collection from "../Models/Collection";
+import Permission from "../Models/Permission";
 import { get } from "../gateway";
-import * as _ from "underscore";
-import Select from "react-select";
 
 const Row = (collection) => (props) => {
     const { item } = props;
@@ -76,15 +76,17 @@ class GroupBoxPermissions extends React.Component {
     }
 
     render() {
-        const columns = [{ title: "Behörigheter" }];
-
-        const { showOptions, selectedOption } = this.state;
-
+        const columns = [
+            {title: "Permissions"},
+        ];
+        
+        const {showOptions, selectedOption} = this.state;
+        
         return (
             <div>
                 <div className="uk-margin-top uk-form uk-form-stacked">
                     <label className="uk-form-label" htmlFor="group">
-                        Lägg till behörighet
+                        Add permisisons
                     </label>
                     <div className="uk-form-controls">
                         <Select
@@ -103,12 +105,7 @@ class GroupBoxPermissions extends React.Component {
                     </div>
                 </div>
                 <div className="uk-margin-top">
-                    <CollectionTable
-                        emptyMessage="Gruppen har inga behörigheter"
-                        rowComponent={Row(this.collection)}
-                        collection={this.collection}
-                        columns={columns}
-                    />
+                    <CollectionTable emptyMessage="The group has no permissions" rowComponent={Row(this.collection)} collection={this.collection} columns={columns} />
                 </div>
             </div>
         );

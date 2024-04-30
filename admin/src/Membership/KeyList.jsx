@@ -1,11 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Collection from "../Models/Collection";
-import Key from "../Models/Key";
 import CollectionTable from "../Components/CollectionTable";
 import DateTimeShow from "../Components/DateTimeShow";
 import SearchBox from "../Components/SearchBox";
+import Collection from "../Models/Collection";
 import CollectionNavigation from "../Models/CollectionNavigation";
+import Key from "../Models/Key";
 
 const Row = (props) => {
     const { item } = props;
@@ -42,25 +42,17 @@ class KeyList extends CollectionNavigation {
 
     render() {
         const columns = [
-            { title: "RFID", sort: "tagid" },
-            { title: "Medlem", sort: "member_id" },
-            { title: "Skapad", sort: "created_at" },
-            { title: "Kommentar", sort: "description" },
+            {title: "RFID", sort: "tagid"},
+            {title: "Member", sort: "member_id"},
+            {title: "Created", sort: "created_at"},
+            {title: "Description", sort: "description"},
         ];
 
         return (
             <div>
-                <h2>Nycklar</h2>
-                <SearchBox
-                    handleChange={this.onSearch}
-                    value={this.state.search}
-                />
-                <CollectionTable
-                    rowComponent={Row}
-                    collection={this.collection}
-                    columns={columns}
-                    onPageNav={this.onPageNav}
-                />
+                <h2>Keys</h2>
+                <SearchBox handleChange={this.onSearch} value={this.state.search}/>
+                <CollectionTable rowComponent={Row} collection={this.collection} columns={columns} onPageNav={this.onPageNav} />
             </div>
         );
     }

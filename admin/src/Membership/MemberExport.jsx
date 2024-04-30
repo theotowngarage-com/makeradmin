@@ -65,14 +65,9 @@ class MemberExport extends React.Component {
                         rows={50}
                     ></textarea>
                 )}
-                {!this.state.csv_content && (
-                    <a
-                        className="uk-button uk-button-primary"
-                        role="button"
-                        onClick={() => this.exportMembers()}
-                    >
-                        Exportera alla aktiva medlemmar som CSV
-                        {this.state.state === "loading" ? "..." : ""}
+                { !this.state.csv_content && (
+                    <a className="uk-button uk-button-primary" role="button" onClick={() => this.exportMembers()}>
+                        Export all active members as CSV{this.state.state === "loading" ? "..." : ""}
                     </a>
                 )}
             </div>

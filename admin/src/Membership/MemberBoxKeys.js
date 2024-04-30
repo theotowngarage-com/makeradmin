@@ -1,11 +1,11 @@
 import React from "react";
-import Collection from "../Models/Collection";
 import { Link } from "react-router-dom";
 import CollectionTable from "../Components/CollectionTable";
+import DateTimeShow from "../Components/DateTimeShow";
+import TextInput from "../Components/TextInput";
+import Collection from "../Models/Collection";
 import Key from "../Models/Key";
 import { confirmModal } from "../message";
-import TextInput from "../Components/TextInput";
-import DateTimeShow from "../Components/DateTimeShow";
 
 const Row = (collection) => (props) => {
     const { item } = props;
@@ -94,30 +94,12 @@ class MemberBoxKeys extends React.Component {
                         >
                             <div className="uk-grid">
                                 <div className="uk-width-1-1">
-                                    <TextInput
-                                        model={this.key}
-                                        tabIndex="1"
-                                        name="tagid"
-                                        title="RFID"
-                                        placeholder="Använd en RFID-läsare för att läsa av det unika numret på nyckeln"
-                                    />
-                                    <TextInput
-                                        model={this.key}
-                                        tabIndex="2"
-                                        name="description"
-                                        title="Kommentar"
-                                        placeholder="Det är valfritt att lägga in en kommentar av nyckeln"
-                                    />
+                                    <TextInput model={this.key} tabIndex="1" name="tagid" title="RFID" placeholder="Use an RFID reader to read the unique number on the key" />
+                                    <TextInput model={this.key} tabIndex="2" name="description" title="Comment" placeholder="It is optional to insert a comment of the key" />
 
                                     <div className="uk-form-row uk-margin-top">
                                         <div className="uk-form-controls">
-                                            <button
-                                                className="uk-button uk-button-success uk-float-right"
-                                                disabled={!saveEnabled}
-                                            >
-                                                <i className="uk-icon-save" />{" "}
-                                                Skapa nyckel
-                                            </button>
+                                            <button className="uk-button uk-button-success uk-float-right" disabled={!saveEnabled}><i className="uk-icon-save"/> Create key</button>
                                         </div>
                                     </div>
                                 </div>
@@ -126,12 +108,7 @@ class MemberBoxKeys extends React.Component {
                     </div>
                 </div>
                 <div className="uk-margin-top">
-                    <CollectionTable
-                        emptyMessage="Inga nycklar för medlemmen"
-                        rowComponent={Row(this.collection, member_id)}
-                        collection={this.collection}
-                        columns={columns}
-                    />
+                    <CollectionTable emptyMessage="No keys for the member" rowComponent={Row(this.collection, member_id)} collection={this.collection} columns={columns} />
                 </div>
             </div>
         );

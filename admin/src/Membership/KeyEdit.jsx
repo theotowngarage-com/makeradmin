@@ -71,35 +71,14 @@ class KeyEdit extends React.Component {
                                         />
                                     </div>
                                 </div>
-
-                                <TextInput
-                                    model={this.key}
-                                    name="tagid"
-                                    title="RFID"
-                                    placeholder="Använd en RFID-läsare för att läsa av det unika numret på nyckeln"
-                                />
-                                <Textarea
-                                    model={this.key}
-                                    name="description"
-                                    title="Kommentar"
-                                    placeholder="Det är valfritt att enter en kommenter av nyckeln"
-                                />
-
+                                
+                                <TextInput model={this.key} name="tagid" title="RFID" placeholder="Use an RFID reader to read the unique number on the key" />
+                                <Textarea model={this.key} name="description" title="Kommentar" placeholder="Use an RFID reader to read the unique number on the key" />
+                                
                                 <div className="uk-form-row uk-margin-top">
                                     <div className="uk-form-controls">
-                                        <a
-                                            className="uk-button uk-button-danger uk-float-left"
-                                            onClick={onDelete}
-                                        >
-                                            <i className="uk-icon-trash" /> Ta
-                                            bort nyckel
-                                        </a>
-                                        <button
-                                            className="uk-button uk-button-success uk-float-right"
-                                            disabled={saveDisabled}
-                                        >
-                                            <i className="uk-icon-save" /> Spara
-                                        </button>
+                                        <a className="uk-button uk-button-danger uk-float-left" onClick={onDelete}><i className="uk-icon-trash"/> Remove key</a>
+                                        <button className="uk-button uk-button-success uk-float-right" disabled={saveDisabled}><i className="uk-icon-save"/> Save</button>
                                     </div>
                                 </div>
                             </div>

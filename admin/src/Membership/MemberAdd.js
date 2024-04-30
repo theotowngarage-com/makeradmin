@@ -13,7 +13,7 @@ class MemberAdd extends React.Component {
     render() {
         return (
             <div>
-                <h2>Skapa medlem</h2>
+                <h2> Create member</h2>
                 <MemberForm
                     member={this.member}
                     onSave={() =>
