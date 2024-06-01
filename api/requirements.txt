@@ -23,8 +23,8 @@ sqlalchemy-stubs
 
 dataclasses_json
 # Test requirements
-pytest<7.2.0 # https://github.com/pytest-dev/pytest/issues/10420 remove version limitation when fixed
-pytest-parallel<7.2.0 # https://github.com/pytest-dev/pytest/issues/10420 remove version limitation when fixed
-selenium
-faker
-dataclasses_json
+#pytest<7.2.0 # https://github.com/pytest-dev/pytest/issues/10420 remove version limitation when fixed
+#pytest-parallel<7.2.0 # https://github.com/pytest-dev/pytest/issues/10420 remove version limitation when fixed
+#selenium
+#faker
+#dataclasses_json
