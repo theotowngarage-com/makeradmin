@@ -84,34 +84,34 @@ services:
     networks:
       - makeradmin
 
-  accessy-syncer:
-    image: makeradmin/api:1.0
-    build:
-      context: ./api
-     network: host
-    command:
-      - "/work/accessy_syncer.sh"
-    environment:
-      MYSQL_HOST: db2
-      MYSQL_DB:
-      MYSQL_PORT:
-      MYSQL_USER:
-      MYSQL_PASS:
-      MAILGUN_DOMAIN:
-      MAILGUN_KEY:
-      MAILGUN_FROM:
-      MAILGUN_TO_OVERRIDE:
-      HOST_PUBLIC:
-      HOST_FRONTEND:
-      ACCESSY_CLIENT_ID:
-      ACCESSY_CLIENT_SECRET:
-      ACCESSY_LABACCESS_GROUP:
-      ACCESSY_SPECIAL_LABACCESS_GROUP:
-      ACCESSY_DO_MODIFY:
-    depends_on:
-      - api
-    networks:
-      - makeradmin
+#  accessy-syncer:
+#    image: makeradmin/api:1.0
+#    build:
+#      context: ./api
+#      network: host
+#    command:
+#      - "/work/accessy_syncer.sh"
+#    environment:
+#      MYSQL_HOST: db2
+#      MYSQL_DB:
+#      MYSQL_PORT:
+#      MYSQL_USER:
+#      MYSQL_PASS:
+#      MAILGUN_DOMAIN:
+#      MAILGUN_KEY:
+#      MAILGUN_FROM:
+#      MAILGUN_TO_OVERRIDE:
+#      HOST_PUBLIC:
+#      HOST_FRONTEND:
+#      ACCESSY_CLIENT_ID:
+#      ACCESSY_CLIENT_SECRET:
+#      ACCESSY_LABACCESS_GROUP:
+#      ACCESSY_SPECIAL_LABACCESS_GROUP:
+#      ACCESSY_DO_MODIFY:
+#    depends_on:
+#      - api
+#    networks:
+#      - makeradmin
 
   public:
     image: makeradmin/public:1.0

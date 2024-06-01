@@ -21,9 +21,10 @@ services:
     volumes:
       - ./api/src:/work/src
 
-  accessy-syncer:
-    volumes:
-      - ./api/src:/work/src
+#  accessy-syncer:
+#    image: makeradmin/api-dev:1.0
+#    volumes:
+#      - ./api/src:/work/src
 
   public:
     image: makeradmin/public-dev:1.0
