@@ -3,7 +3,7 @@ services:
     ports:
       - "3306:3306"
     volumes:
-      - logs:/var/www/html/storage/logs
+      - logs:/var/log/mysql
 
   api:
     volumes:
