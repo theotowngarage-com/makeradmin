@@ -24,6 +24,7 @@ services:
     image: makeradmin/api:1.0
     build:
       context: ./api
+      network: host
     volumes:
       - ./logs/api:/work/logs
     depends_on:
@@ -63,6 +64,7 @@ services:
     image: makeradmin/api:1.0
     build:
       context: ./api
+      network: host
     command:
       - "/work/dispatch_emails.sh"
     environment:
@@ -86,6 +88,7 @@ services:
     image: makeradmin/api:1.0
     build:
       context: ./api
+     network: host
     command:
       - "/work/accessy_syncer.sh"
     environment:
@@ -116,6 +119,7 @@ services:
       - "./.webshop_product_images:/work/static/product_images"
     build:
       context: ./public
+      network: host
     environment:
       APIGATEWAY: "api"
       HOST_BACKEND:
@@ -131,6 +135,7 @@ services:
     image: makeradmin/admin:1.0
     build:
       context: ./admin
+      network: host
     environment:
       HOST_BACKEND:
       VIRTUAL_HOST: "${HOST_FRONTEND}"
