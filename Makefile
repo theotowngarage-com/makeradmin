@@ -1,13 +1,16 @@
 
-COMPOSE=docker compose
-TEST_COMPOSE=docker compose -p test -f docker-compose.yml -f docker-compose.test.yml
-DEV_COMPOSE=docker compose -f docker-compose.yml -f docker-compose.dev.yml
+COMPOSE=docker-compose
+TEST_COMPOSE=docker-compose -p test -f docker-compose.yml -f docker-compose.test.yml
+DEV_COMPOSE=docker-compose -f docker-compose.yml -f docker-compose.dev.yml
 PYTEST_PARAMS?=
 
 -include local.mk
 
 build: .env
 	$(COMPOSE) build
+
+build-dev: .env
+	$(DEV_COMPOSE) build
 
 run: .env
 	$(COMPOSE) up
@@ -41,7 +44,7 @@ init-npm:
 
 init-pip:
 	python3 -m pip install --upgrade -r requirements.txt
-	pre-commit install --install-hooks
+	python3 -m pre-commit install --install-hooks
 
 init: init-pip init-npm
 
@@ -55,8 +58,11 @@ test-admin-js:
 	npm --prefix admin run eslint
 	npm --prefix admin run test
 
-firstrun: .env init build
+
+firstrun: .env build
 	$(COMPOSE) run api python3 ./firstrun.py
+
+firstrun-dev: init build-dev
 
 format: format-python format-precommit format-webstuff
 format-python:

@@ -6,6 +6,7 @@ services:
       - logs:/var/log/mysql
 
   api:
+    image: makeradmin/api-dev:1.0
     volumes:
       - ./api/src:/work/src
       - logs:/work/logs
@@ -16,6 +17,7 @@ services:
       TEST_SERVICE_TOKEN:
 
   email-dispatcher:
+    image: makeradmin/api-dev:1.0
     volumes:
       - ./api/src:/work/src
 
@@ -24,6 +26,7 @@ services:
       - ./api/src:/work/src
 
   public:
+    image: makeradmin/public-dev:1.0
     build:
       args:
         DEV_BUILD: "true"
@@ -37,6 +40,7 @@ services:
       DEV_RUN: "true"
 
   admin:
+    image: makeradmin/admin-dev:1.0
     build:
       dockerfile: DevServerDockerfile
     ports:

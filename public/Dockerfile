@@ -14,7 +14,7 @@ RUN apk update \
 	curl \
 	&& rm -rf /var/cache/apk/*
 
-RUN npm install -g npm@9.2.0
+RUN npm install -g npm@9.9.3
 
 RUN npm i -g npm sass
 
