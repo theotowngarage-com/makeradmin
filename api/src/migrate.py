@@ -26,14 +26,14 @@ def ensure_migrations_table(engine, session_factory):
     if "migrations" not in table_names:
         with closing(session_factory()) as session:
             logger.info("creating migrations table")
-            session.execute("ALTER DATABASE makeradmin CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci")
+            session.execute("ALTER DATABASE makeradmin CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci")
             session.execute(
                 "CREATE TABLE migrations ("
                 "    id INTEGER NOT NULL,"
-                "    name VARCHAR(255) COLLATE utf8mb4_0900_ai_ci NOT NULL,"
+                "    name VARCHAR(255) COLLATE utf8mb4_unicode_ci NOT NULL,"
                 "    applied_at DATETIME NOT NULL,"
                 "    PRIMARY KEY (id)"
-                ") ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci"
+                ") ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci"
             )
             session.commit()
     elif "service" in {c["name"] for c in engine_inspect.get_columns("migrations")}:

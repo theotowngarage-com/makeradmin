@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS `webshop_transaction_accounts` (
   `deleted_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `webshop_transaction_accounts_display_order_unique` (`display_order`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS `webshop_transaction_cost_centers` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -20,7 +20,7 @@ CREATE TABLE IF NOT EXISTS `webshop_transaction_cost_centers` (
   `deleted_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `webshop_transaction_cost_centers_display_order_unique` (`display_order`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS `webshop_product_accounting` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -36,4 +36,4 @@ CREATE TABLE IF NOT EXISTS `webshop_product_accounting` (
   CONSTRAINT `webshop_product_accounting_cost_center_id_foreign` FOREIGN KEY (`cost_center_id`) REFERENCES `webshop_transaction_cost_centers` (`id`),
   KEY `webshop_product_accounting_id_index` (`product_id`),
   CONSTRAINT `webshop_product_accounting_product_id_foreign` FOREIGN KEY (`product_id`) REFERENCES `webshop_products` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

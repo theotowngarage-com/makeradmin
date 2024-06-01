@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS `webshop_product_categories` (
   `display_order` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `webshop_product_categories_display_order_unique` (`display_order`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS `webshop_products` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -31,13 +31,13 @@ CREATE TABLE IF NOT EXISTS `webshop_products` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `webshop_products_display_order_unique` (`display_order`),
   KEY `category_id_key` (`category_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=62 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=62 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS `webshop_actions` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS `webshop_product_actions` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -50,7 +50,7 @@ CREATE TABLE IF NOT EXISTS `webshop_product_actions` (
   PRIMARY KEY (`id`),
   KEY `product_constraint` (`product_id`),
   KEY `action_constraint` (`action_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS `webshop_transactions` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -59,7 +59,7 @@ CREATE TABLE IF NOT EXISTS `webshop_transactions` (
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `status` enum('pending','completed','failed') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 CREATE TABLE IF NOT EXISTS `webshop_transaction_contents` (
 
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -69,7 +69,7 @@ CREATE TABLE IF NOT EXISTS `webshop_transaction_contents` (
   `amount` decimal(15,2) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `transaction_id_key` (`transaction_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS `webshop_transaction_actions` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -81,14 +81,14 @@ CREATE TABLE IF NOT EXISTS `webshop_transaction_actions` (
   PRIMARY KEY (`id`),
   KEY `content_key` (`content_id`),
   KEY `action_constraint3` (`action_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS `webshop_pending_registrations` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `transaction_id` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id`),
   KEY `transaction_key` (`transaction_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS `webshop_product_images` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -100,7 +100,7 @@ CREATE TABLE IF NOT EXISTS `webshop_product_images` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `webshop_product_images_product_id_display_order_unique` (`product_id`,`display_order`),
   KEY `image_product_constraint` (`product_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS `webshop_stripe_pending` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -110,7 +110,7 @@ CREATE TABLE IF NOT EXISTS `webshop_stripe_pending` (
   PRIMARY KEY (`id`),
   KEY `token_key` (`stripe_token`),
   KEY `transaction_constraint2` (`transaction_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 DROP TABLE IF EXISTS `migrations_webshop`;
 DROP TABLE IF EXISTS `webshop_product_variants`;
@@ -119,15 +119,15 @@ DROP TABLE IF EXISTS `webshop_product_variants`;
 SET sql_notes = 1;
 
 -- convert old existing tables to non deprecated char set and better collate
-ALTER TABLE `webshop_pending_registrations` CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
-ALTER TABLE `webshop_product_actions` CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
-ALTER TABLE `webshop_product_categories` CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
-ALTER TABLE `webshop_product_images` CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
-ALTER TABLE `webshop_products` CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
-ALTER TABLE `webshop_stripe_pending` CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
-ALTER TABLE `webshop_transaction_actions` CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
-ALTER TABLE `webshop_transaction_contents` CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
-ALTER TABLE `webshop_transactions` CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
+ALTER TABLE `webshop_pending_registrations` CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+ALTER TABLE `webshop_product_actions` CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+ALTER TABLE `webshop_product_categories` CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+ALTER TABLE `webshop_product_images` CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+ALTER TABLE `webshop_products` CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+ALTER TABLE `webshop_stripe_pending` CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+ALTER TABLE `webshop_transaction_actions` CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+ALTER TABLE `webshop_transaction_contents` CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+ALTER TABLE `webshop_transactions` CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- add constraints that are missing in database.
 
