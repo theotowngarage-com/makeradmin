@@ -3,7 +3,6 @@ FROM python:3.11-alpine
 RUN apk update \
 	&& apk add \
 	less \
-	bash \
 	build-base \
 	curl \
 	python3-dev \
@@ -46,6 +45,19 @@ RUN sass scss/style.scss static/style.css
 ARG DEV_BUILD
 
 RUN test "$DEV_BUILD" = "true" || npm run build
+
+# Remove bloat
+RUN test "$DEV_BUILD" = "true" || apk update \
+	&& apk del \
+	less \
+	build-base \
+	curl \
+	python3-dev \
+	wget \
+	curl
+
+RUN test "$DEV_BUILD" = "true" || rm -rf /var/cache/apk/*
+
 
 EXPOSE 80
 

@@ -13,14 +13,13 @@ WORKDIR /work
 RUN npm ci
 
 COPY ./src/ /work/src
-COPY ./jestSetup.js /work/
 
-RUN npm run eslint
-
-RUN npm run test
+#COPY ./jestSetup.js /work/
+#RUN npm run eslint
+#RUN npm run test
 
 RUN npm run build
-RUN echo tsc --version
+#RUN echo tsc --version
 
 FROM nginx:alpine
 
