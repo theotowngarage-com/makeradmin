@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 function wait_for {
     local command="$*"
